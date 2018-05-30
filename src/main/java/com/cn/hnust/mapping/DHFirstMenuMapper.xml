@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.hnust.mapper.DHFirstMenuMapper">
+
+	<!--实体映射 -->
+	<resultMap id="dHFirstMenu" type="com.cn.hnust.pojo.DHFirstMenu">
+		<!--编号 -->
+		<id property="game_ordersn" column="game_ordersn" />
+		<!---->
+		<result property="lianhua_strength" column="lianhua_strength" />
+		<!---->
+		<result property="equip_face_img" column="equip_face_img" />
+		<!---->
+		<result property="lianhua_wakan" column="lianhua_wakan" />
+		<!---->
+		<result property="lianhua_gengu" column="lianhua_gengu" />
+		<!---->
+		<result property="pass_fair_show" column="pass_fair_show" />
+		<!---->
+		<result property="areaid" column="areaid" />
+		<!---->
+		<result property="server_name" column="server_name" />
+		<!---->
+		<result property="lianhua_dex" column="lianhua_dex" />
+		<!---->
+		<result property="min_buy_level" column="min_buy_level" />
+		<!---->
+		<result property="kindid" column="kindid" />
+		<!---->
+		<result property="remain_expire_time" column="remain_expire_time" />
+		<!---->
+		<result property="equip_level" column="equip_level" />
+		<!---->
+		<result property="min_buyer_level" column="min_buyer_level" />
+		<!---->
+		<result property="area_name" column="area_name" />
+		<!---->
+		<result property="server_type" column="server_type" />
+		<!---->
+		<result property="equip_type" column="equip_type" />
+		<!---->
+		<result property="price" column="price" />
+		<!---->
+		<result property="equip_type_desc" column="equip_type_desc" />
+		<!---->
+		<result property="expire_time" column="expire_time" />
+		<!---->
+		<result property="serverid" column="serverid" />
+		<!---->
+		<result property="storage_type" column="storage_type" />
+		<!---->
+		<result property="lianhua_speed" column="lianhua_speed" />
+		<!---->
+		<result property="equip_name" column="equip_name" />
+		<!---->
+		<result property="can_cross_buy" column="can_cross_buy" />
+		<!---->
+		<result property="selling_time" column="selling_time" />
+		<!---->
+		<result property="other_info" column="other_info" />
+		<!---->
+		<result property="first_create_time" column="first_create_time" />
+		<!---->
+		<result property="last_update_time" column="last_update_time" />
+	</resultMap>
+
+<!-- 	<select id="getXlDHFirstMenus" resultMap="dHFirstMenu"> -->
+<!-- 		select b.* -->
+<!-- 		from dh_desc -->
+<!-- 		a,dh_first_menu b where a.game_ordersn=b.game_ordersn -->
+<!-- 		and -->
+<!-- 		a.game_key -->
+<!-- 		like '%三尸%狂暴%' and cast(a.game_value as unsigned int) > -->
+<!-- 		'37' -->
+<!-- 	</select> -->
+	
+	
+	<!-- 通用查询结果列 -->
+	<sql id="Base_Column_List">
+		game_ordersn, lianhua_strength, equip_face_img,
+		lianhua_wakan, lianhua_gengu,
+		pass_fair_show, areaid, server_name,
+		lianhua_dex, min_buy_level,
+		kindid, remain_expire_time, equip_level,
+		min_buyer_level, area_name,
+		server_type, equip_type, price,
+		equip_type_desc, expire_time,
+		serverid, storage_type, lianhua_speed,
+		equip_name, can_cross_buy,
+		selling_time, other_info, first_create_time,
+		last_update_time
+	</sql>
+	<select id="getXlDHFirstMenus" resultMap="dHFirstMenu">
+		select <include refid="Base_Column_List" />
+		from dh_first_menu
+		 where game_ordersn='122100G4DM'
+	</select>
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="dHFirstMenu"
+		parameterType="java.lang.String">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM dh_first_menu
+		WHERE game_ordersn = #{game_ordersn}
+	</select>
+	
+	<!-- 查询（根据主键ID查询）and serverid='121' -->
+	<select id="getDHFirstMenus" resultMap="dHFirstMenu"
+		parameterType="java.lang.String">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM dh_first_menu
+		WHERE kindid = #{kindid} 
+	</select>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectAll" resultMap="dHFirstMenu">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM dh_first_menu
+	</select>
+
+	<!--删除：根据主键ID删除 -->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		DELETE FROM
+		dh_first_menu
+		WHERE game_ordersn = #{game_ordersn}
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="com.cn.hnust.pojo.DHFirstMenu">
+		INSERT INTO dh_first_menu
+		(game_ordersn,lianhua_strength,equip_face_img,lianhua_wakan,lianhua_gengu,pass_fair_show,areaid,server_name,lianhua_dex,min_buy_level,kindid,remain_expire_time,equip_level,min_buyer_level,area_name,server_type,equip_type,price,equip_type_desc,expire_time,serverid,storage_type,lianhua_speed,equip_name,can_cross_buy,selling_time,other_info,first_create_time,last_update_time)
+		VALUES
+		(#{game_ordersn},#{lianhua_strength},#{equip_face_img},#{lianhua_wakan},#{lianhua_gengu},#{pass_fair_show},#{areaid},#{server_name},#{lianhua_dex},#{min_buy_level},#{kindid},#{remain_expire_time},#{equip_level},#{min_buyer_level},#{area_name},#{server_type},#{equip_type},#{price},#{equip_type_desc},#{expire_time},#{serverid},#{storage_type},#{lianhua_speed},#{equip_name},#{can_cross_buy},#{selling_time},#{other_info},#{first_create_time},#{last_update_time})
+	</insert>
+
+	<!-- 添加 （匹配有值的字段） -->
+	<insert id="insertSelective" parameterType="com.cn.hnust.pojo.DHFirstMenu">
+		INSERT INTO dh_first_menu
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="game_ordersn != null">
+				game_ordersn,
+			</if>
+			<if test="lianhua_strength != null">
+				lianhua_strength,
+			</if>
+			<if test="equip_face_img != null">
+				equip_face_img,
+			</if>
+			<if test="lianhua_wakan != null">
+				lianhua_wakan,
+			</if>
+			<if test="lianhua_gengu != null">
+				lianhua_gengu,
+			</if>
+			<if test="pass_fair_show != null">
+				pass_fair_show,
+			</if>
+			<if test="areaid != null">
+				areaid,
+			</if>
+			<if test="server_name != null">
+				server_name,
+			</if>
+			<if test="lianhua_dex != null">
+				lianhua_dex,
+			</if>
+			<if test="min_buy_level != null">
+				min_buy_level,
+			</if>
+			<if test="kindid != null">
+				kindid,
+			</if>
+			<if test="remain_expire_time != null">
+				remain_expire_time,
+			</if>
+			<if test="equip_level != null">
+				equip_level,
+			</if>
+			<if test="min_buyer_level != null">
+				min_buyer_level,
+			</if>
+			<if test="area_name != null">
+				area_name,
+			</if>
+			<if test="server_type != null">
+				server_type,
+			</if>
+			<if test="equip_type != null">
+				equip_type,
+			</if>
+			<if test="price != null">
+				price,
+			</if>
+			<if test="equip_type_desc != null">
+				equip_type_desc,
+			</if>
+			<if test="expire_time != null">
+				expire_time,
+			</if>
+			<if test="serverid != null">
+				serverid,
+			</if>
+			<if test="storage_type != null">
+				storage_type,
+			</if>
+			<if test="lianhua_speed != null">
+				lianhua_speed,
+			</if>
+			<if test="equip_name != null">
+				equip_name,
+			</if>
+			<if test="can_cross_buy != null">
+				can_cross_buy,
+			</if>
+			<if test="selling_time != null">
+				selling_time,
+			</if>
+			<if test="other_info != null">
+				other_info,
+			</if>
+			<if test="first_create_time != null">
+				first_create_time,
+			</if>
+			<if test="last_update_time != null">
+				last_update_time,
+			</if>
+
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="game_ordersn!=null">
+				#{game_ordersn},
+			</if>
+			<if test="lianhua_strength!=null">
+				#{lianhua_strength},
+			</if>
+			<if test="equip_face_img!=null">
+				#{equip_face_img},
+			</if>
+			<if test="lianhua_wakan!=null">
+				#{lianhua_wakan},
+			</if>
+			<if test="lianhua_gengu!=null">
+				#{lianhua_gengu},
+			</if>
+			<if test="pass_fair_show!=null">
+				#{pass_fair_show},
+			</if>
+			<if test="areaid!=null">
+				#{areaid},
+			</if>
+			<if test="server_name!=null">
+				#{server_name},
+			</if>
+			<if test="lianhua_dex!=null">
+				#{lianhua_dex},
+			</if>
+			<if test="min_buy_level!=null">
+				#{min_buy_level},
+			</if>
+			<if test="kindid!=null">
+				#{kindid},
+			</if>
+			<if test="remain_expire_time!=null">
+				#{remain_expire_time},
+			</if>
+			<if test="equip_level!=null">
+				#{equip_level},
+			</if>
+			<if test="min_buyer_level!=null">
+				#{min_buyer_level},
+			</if>
+			<if test="area_name!=null">
+				#{area_name},
+			</if>
+			<if test="server_type!=null">
+				#{server_type},
+			</if>
+			<if test="equip_type!=null">
+				#{equip_type},
+			</if>
+			<if test="price!=null">
+				#{price},
+			</if>
+			<if test="equip_type_desc!=null">
+				#{equip_type_desc},
+			</if>
+			<if test="expire_time!=null">
+				#{expire_time},
+			</if>
+			<if test="serverid!=null">
+				#{serverid},
+			</if>
+			<if test="storage_type!=null">
+				#{storage_type},
+			</if>
+			<if test="lianhua_speed!=null">
+				#{lianhua_speed},
+			</if>
+			<if test="equip_name!=null">
+				#{equip_name},
+			</if>
+			<if test="can_cross_buy!=null">
+				#{can_cross_buy},
+			</if>
+			<if test="selling_time!=null">
+				#{selling_time},
+			</if>
+			<if test="other_info!=null">
+				#{other_info},
+			</if>
+			<if test="first_create_time!=null">
+				#{first_create_time},
+			</if>
+			<if test="last_update_time!=null">
+				#{last_update_time},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 新增或修改 （匹配有值的字段） -->
+	<insert id="replaceInsert" parameterType="com.cn.hnust.pojo.DHFirstMenu">
+		REPLACE INTO dh_first_menu
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="game_ordersn != null">
+				game_ordersn,
+			</if>
+			<if test="lianhua_strength != null">
+				lianhua_strength,
+			</if>
+			<if test="equip_face_img != null">
+				equip_face_img,
+			</if>
+			<if test="lianhua_wakan != null">
+				lianhua_wakan,
+			</if>
+			<if test="lianhua_gengu != null">
+				lianhua_gengu,
+			</if>
+			<if test="pass_fair_show != null">
+				pass_fair_show,
+			</if>
+			<if test="areaid != null">
+				areaid,
+			</if>
+			<if test="server_name != null">
+				server_name,
+			</if>
+			<if test="lianhua_dex != null">
+				lianhua_dex,
+			</if>
+			<if test="min_buy_level != null">
+				min_buy_level,
+			</if>
+			<if test="kindid != null">
+				kindid,
+			</if>
+			<if test="remain_expire_time != null">
+				remain_expire_time,
+			</if>
+			<if test="equip_level != null">
+				equip_level,
+			</if>
+			<if test="min_buyer_level != null">
+				min_buyer_level,
+			</if>
+			<if test="area_name != null">
+				area_name,
+			</if>
+			<if test="server_type != null">
+				server_type,
+			</if>
+			<if test="equip_type != null">
+				equip_type,
+			</if>
+			<if test="price != null">
+				price,
+			</if>
+			<if test="equip_type_desc != null">
+				equip_type_desc,
+			</if>
+			<if test="expire_time != null">
+				expire_time,
+			</if>
+			<if test="serverid != null">
+				serverid,
+			</if>
+			<if test="storage_type != null">
+				storage_type,
+			</if>
+			<if test="lianhua_speed != null">
+				lianhua_speed,
+			</if>
+			<if test="equip_name != null">
+				equip_name,
+			</if>
+			<if test="can_cross_buy != null">
+				can_cross_buy,
+			</if>
+			<if test="selling_time != null">
+				selling_time,
+			</if>
+			<if test="other_info != null">
+				other_info,
+			</if>
+			<if test="first_create_time != null">
+				first_create_time,
+			</if>
+			<if test="last_update_time != null">
+				last_update_time,
+			</if>
+
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="game_ordersn!=null">
+				#{game_ordersn},
+			</if>
+			<if test="lianhua_strength!=null">
+				#{lianhua_strength},
+			</if>
+			<if test="equip_face_img!=null">
+				#{equip_face_img},
+			</if>
+			<if test="lianhua_wakan!=null">
+				#{lianhua_wakan},
+			</if>
+			<if test="lianhua_gengu!=null">
+				#{lianhua_gengu},
+			</if>
+			<if test="pass_fair_show!=null">
+				#{pass_fair_show},
+			</if>
+			<if test="areaid!=null">
+				#{areaid},
+			</if>
+			<if test="server_name!=null">
+				#{server_name},
+			</if>
+			<if test="lianhua_dex!=null">
+				#{lianhua_dex},
+			</if>
+			<if test="min_buy_level!=null">
+				#{min_buy_level},
+			</if>
+			<if test="kindid!=null">
+				#{kindid},
+			</if>
+			<if test="remain_expire_time!=null">
+				#{remain_expire_time},
+			</if>
+			<if test="equip_level!=null">
+				#{equip_level},
+			</if>
+			<if test="min_buyer_level!=null">
+				#{min_buyer_level},
+			</if>
+			<if test="area_name!=null">
+				#{area_name},
+			</if>
+			<if test="server_type!=null">
+				#{server_type},
+			</if>
+			<if test="equip_type!=null">
+				#{equip_type},
+			</if>
+			<if test="price!=null">
+				#{price},
+			</if>
+			<if test="equip_type_desc!=null">
+				#{equip_type_desc},
+			</if>
+			<if test="expire_time!=null">
+				#{expire_time},
+			</if>
+			<if test="serverid!=null">
+				#{serverid},
+			</if>
+			<if test="storage_type!=null">
+				#{storage_type},
+			</if>
+			<if test="lianhua_speed!=null">
+				#{lianhua_speed},
+			</if>
+			<if test="equip_name!=null">
+				#{equip_name},
+			</if>
+			<if test="can_cross_buy!=null">
+				#{can_cross_buy},
+			</if>
+			<if test="selling_time!=null">
+				#{selling_time},
+			</if>
+			<if test="other_info!=null">
+				#{other_info},
+			</if>
+			<if test="first_create_time!=null">
+				#{first_create_time},
+			</if>
+			<if test="last_update_time!=null">
+				#{last_update_time},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 修 改 -->
+	<update id="updateByPrimaryKeySelective" parameterType="com.cn.hnust.pojo.DHFirstMenu">
+		UPDATE dh_first_menu
+		<set>
+			<if test="lianhua_strength != null">
+				lianhua_strength = #{lianhua_strength},
+			</if>
+			<if test="equip_face_img != null">
+				equip_face_img = #{equip_face_img},
+			</if>
+			<if test="lianhua_wakan != null">
+				lianhua_wakan = #{lianhua_wakan},
+			</if>
+			<if test="lianhua_gengu != null">
+				lianhua_gengu = #{lianhua_gengu},
+			</if>
+			<if test="pass_fair_show != null">
+				pass_fair_show = #{pass_fair_show},
+			</if>
+			<if test="areaid != null">
+				areaid = #{areaid},
+			</if>
+			<if test="server_name != null">
+				server_name = #{server_name},
+			</if>
+			<if test="lianhua_dex != null">
+				lianhua_dex = #{lianhua_dex},
+			</if>
+			<if test="min_buy_level != null">
+				min_buy_level = #{min_buy_level},
+			</if>
+			<if test="kindid != null">
+				kindid = #{kindid},
+			</if>
+			<if test="remain_expire_time != null">
+				remain_expire_time = #{remain_expire_time},
+			</if>
+			<if test="equip_level != null">
+				equip_level = #{equip_level},
+			</if>
+			<if test="min_buyer_level != null">
+				min_buyer_level = #{min_buyer_level},
+			</if>
+			<if test="area_name != null">
+				area_name = #{area_name},
+			</if>
+			<if test="server_type != null">
+				server_type = #{server_type},
+			</if>
+			<if test="equip_type != null">
+				equip_type = #{equip_type},
+			</if>
+			<if test="price != null">
+				price = #{price},
+			</if>
+			<if test="equip_type_desc != null">
+				equip_type_desc = #{equip_type_desc},
+			</if>
+			<if test="expire_time != null">
+				expire_time = #{expire_time},
+			</if>
+			<if test="serverid != null">
+				serverid = #{serverid},
+			</if>
+			<if test="storage_type != null">
+				storage_type = #{storage_type},
+			</if>
+			<if test="lianhua_speed != null">
+				lianhua_speed = #{lianhua_speed},
+			</if>
+			<if test="equip_name != null">
+				equip_name = #{equip_name},
+			</if>
+			<if test="can_cross_buy != null">
+				can_cross_buy = #{can_cross_buy},
+			</if>
+			<if test="selling_time != null">
+				selling_time = #{selling_time},
+			</if>
+			<if test="other_info != null">
+				other_info = #{other_info},
+			</if>
+			<if test="first_create_time != null">
+				first_create_time = #{first_create_time},
+			</if>
+			<if test="last_update_time != null">
+				last_update_time = #{last_update_time},
+			</if>
+
+		</set>
+		WHERE game_ordersn = #{game_ordersn}
+	</update>
+
+	<!-- 修 改 -->
+	<update id="updateByPrimaryKey" parameterType="com.cn.hnust.pojo.DHFirstMenu">
+		UPDATE
+		dh_first_menu
+		SET
+		lianhua_strength = #{lianhua_strength},
+		equip_face_img
+		= #{equip_face_img},
+		lianhua_wakan = #{lianhua_wakan},
+		lianhua_gengu =
+		#{lianhua_gengu},
+		pass_fair_show = #{pass_fair_show},
+		areaid =
+		#{areaid},
+		server_name = #{server_name},
+		lianhua_dex = #{lianhua_dex},
+		min_buy_level = #{min_buy_level},
+		kindid = #{kindid},
+		remain_expire_time = #{remain_expire_time},
+		equip_level =
+		#{equip_level},
+		min_buyer_level = #{min_buyer_level},
+		area_name =
+		#{area_name},
+		server_type = #{server_type},
+		equip_type = #{equip_type},
+		price = #{price},
+		equip_type_desc = #{equip_type_desc},
+		expire_time =
+		#{expire_time},
+		serverid = #{serverid},
+		storage_type = #{storage_type},
+		lianhua_speed = #{lianhua_speed},
+		equip_name = #{equip_name},
+		can_cross_buy = #{can_cross_buy},
+		selling_time = #{selling_time},
+		other_info = #{other_info},
+		first_create_time = #{first_create_time},
+		last_update_time = #{last_update_time}
+		WHERE game_ordersn =
+		#{game_ordersn}
+	</update>
+
+</mapper>

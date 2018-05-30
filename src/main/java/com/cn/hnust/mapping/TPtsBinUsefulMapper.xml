@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.hnust.mapper.TPtsBinUsefulMapper">
+
+	<!--实体映射-->
+	<resultMap id="tPtsBinUseful" type="com.cn.hnust.pojo.TPtsBinUseful">
+		<!---->
+		<id property="uuid" column="uuid" />
+		<!---->
+		<result property="fitTrk" column="fit_trk" />
+		<!---->
+		<result property="fitOfs" column="fit_ofs" />
+		<!---->
+		<result property="fitCtt" column="fit_ctt" />
+		<!---->
+		<result property="fitLen" column="fit_len" />
+		<!---->
+		<result property="crdTrk" column="crd_trk" />
+		<!---->
+		<result property="crdOfs" column="crd_ofs" />
+		<!---->
+		<result property="crdLen" column="crd_len" />
+		<!---->
+		<result property="crdTyp" column="crd_typ" />
+		<!---->
+		<result property="expDtFlg" column="exp_dt_flg" />
+		<!---->
+		<result property="crdNm" column="crd_nm" />
+		<!---->
+		<result property="intMod" column="int_mod" />
+		<!---->
+		<result property="bnkTyp" column="bnk_typ" />
+		<!---->
+		<result property="fitNo" column="fit_no" />
+		<!---->
+		<result property="bnkValue" column="bnk_value" />
+		<!---->
+		<result property="bnkNm" column="bnk_nm" />
+		<!---->
+		<result property="bnkCode" column="bnk_code" />
+		<!---->
+		<result property="tmSmp" column="tm_smp" />
+		<!---->
+		<result property="trackLen1" column="track_len1" />
+		<!---->
+		<result property="trackLen2" column="track_len2" />
+		<!---->
+		<result property="trackLen3" column="track_len3" />
+		<!---->
+		<result property="trackByte1" column="track_byte1" />
+		<!---->
+		<result property="trackByte2" column="track_byte2" />
+		<!---->
+		<result property="trackByte3" column="track_byte3" />
+		<!---->
+		<result property="atm" column="atm" />
+		<!---->
+		<result property="pos" column="pos" />
+		<!---->
+		<result property="crdOfs2" column="crd_ofs2" />
+		<!---->
+		<result property="crdOfs3" column="crd_ofs3" />
+		<!---->
+		<result property="fitOfs2" column="fit_ofs2" />
+		<!---->
+		<result property="fitOfs3" column="fit_ofs3" />
+		<!---->
+		<result property="foreignCarFlag" column="foreign_car_flag" />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		uuid,	fit_trk,	fit_ofs,	fit_ctt,	fit_len,	crd_trk,	crd_ofs,	crd_len,	crd_typ,	exp_dt_flg,	crd_nm,	int_mod,	bnk_typ,	fit_no,	bnk_value,	bnk_nm,	bnk_code,	tm_smp,	track_len1,	track_len2,	track_len3,	track_byte1,	track_byte2,	track_byte3,	atm,	pos,	crd_ofs2,	crd_ofs3,	fit_ofs2,	fit_ofs3,	foreign_car_flag
+	</sql>
+
+	<!-- 通用查询条件-->
+	<sql id="dynamicWhere">
+		<where>
+			<if test="uuid != null"> AND uuid = #{uuid} </if>
+			<if test="fitTrk != null"> AND fit_trk = #{fitTrk} </if>
+			<if test="fitOfs != null"> AND fit_ofs = #{fitOfs} </if>
+			<if test="fitCtt != null"> AND fit_ctt = #{fitCtt} </if>
+			<if test="fitLen != null"> AND fit_len = #{fitLen} </if>
+			<if test="crdTrk != null"> AND crd_trk = #{crdTrk} </if>
+			<if test="crdOfs != null"> AND crd_ofs = #{crdOfs} </if>
+			<if test="crdLen != null"> AND crd_len = #{crdLen} </if>
+			<if test="crdTyp != null"> AND crd_typ = #{crdTyp} </if>
+			<if test="expDtFlg != null"> AND exp_dt_flg = #{expDtFlg} </if>
+			<if test="crdNm != null"> AND crd_nm = #{crdNm} </if>
+			<if test="intMod != null"> AND int_mod = #{intMod} </if>
+			<if test="bnkTyp != null"> AND bnk_typ = #{bnkTyp} </if>
+			<if test="fitNo != null"> AND fit_no = #{fitNo} </if>
+			<if test="bnkValue != null"> AND bnk_value = #{bnkValue} </if>
+			<if test="bnkNm != null"> AND bnk_nm = #{bnkNm} </if>
+			<if test="bnkCode != null"> AND bnk_code = #{bnkCode} </if>
+			<if test="tmSmp != null"> AND tm_smp = #{tmSmp} </if>
+			<if test="trackLen1 != null"> AND track_len1 = #{trackLen1} </if>
+			<if test="trackLen2 != null"> AND track_len2 = #{trackLen2} </if>
+			<if test="trackLen3 != null"> AND track_len3 = #{trackLen3} </if>
+			<if test="trackByte1 != null"> AND track_byte1 = #{trackByte1} </if>
+			<if test="trackByte2 != null"> AND track_byte2 = #{trackByte2} </if>
+			<if test="trackByte3 != null"> AND track_byte3 = #{trackByte3} </if>
+			<if test="atm != null"> AND atm = #{atm} </if>
+			<if test="pos != null"> AND pos = #{pos} </if>
+			<if test="crdOfs2 != null"> AND crd_ofs2 = #{crdOfs2} </if>
+			<if test="crdOfs3 != null"> AND crd_ofs3 = #{crdOfs3} </if>
+			<if test="fitOfs2 != null"> AND fit_ofs2 = #{fitOfs2} </if>
+			<if test="fitOfs3 != null"> AND fit_ofs3 = #{fitOfs3} </if>
+			<if test="foreignCarFlag != null"> AND foreign_car_flag = #{foreignCarFlag} </if>
+		</where>
+	</sql>
+
+	<!-- 查询所有数据 -->
+	<select id="selectAll" resultMap="tPtsBinUseful">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM t_pts_bin_useful
+	</select>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="tPtsBinUseful" parameterType="java.lang.String">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM t_pts_bin_useful
+		 WHERE uuid = #{uuid}
+	</select>
+
+	<!-- 查询（根据实体查询） -->
+	<select id="selectBySelected" resultMap="tPtsBinUseful">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM t_pts_bin_useful
+		 <include refid="dynamicWhere"/>
+	</select>
+
+	<!--删除：根据主键ID删除-->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		 DELETE FROM t_pts_bin_useful
+		 WHERE uuid = #{uuid}
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="com.cn.hnust.pojo.TPtsBinUseful">
+		 INSERT INTO t_pts_bin_useful
+ 			(uuid,fit_trk,fit_ofs,fit_ctt,fit_len,crd_trk,crd_ofs,crd_len,crd_typ,exp_dt_flg,crd_nm,int_mod,bnk_typ,fit_no,bnk_value,bnk_nm,bnk_code,tm_smp,track_len1,track_len2,track_len3,track_byte1,track_byte2,track_byte3,atm,pos,crd_ofs2,crd_ofs3,fit_ofs2,fit_ofs3,foreign_car_flag) 
+		 VALUES 
+ 			(#{uuid},#{fitTrk},#{fitOfs},#{fitCtt},#{fitLen},#{crdTrk},#{crdOfs},#{crdLen},#{crdTyp},#{expDtFlg},#{crdNm},#{intMod},#{bnkTyp},#{fitNo},#{bnkValue},#{bnkNm},#{bnkCode},#{tmSmp},#{trackLen1},#{trackLen2},#{trackLen3},#{trackByte1},#{trackByte2},#{trackByte3},#{atm},#{pos},#{crdOfs2},#{crdOfs3},#{fitOfs2},#{fitOfs3},#{foreignCarFlag}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.cn.hnust.pojo.TPtsBinUseful">
+		 INSERT INTO t_pts_bin_useful
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="uuid != null">
+				 uuid,
+			</if>
+			<if test="fitTrk != null">
+				 fit_trk,
+			</if>
+			<if test="fitOfs != null">
+				 fit_ofs,
+			</if>
+			<if test="fitCtt != null">
+				 fit_ctt,
+			</if>
+			<if test="fitLen != null">
+				 fit_len,
+			</if>
+			<if test="crdTrk != null">
+				 crd_trk,
+			</if>
+			<if test="crdOfs != null">
+				 crd_ofs,
+			</if>
+			<if test="crdLen != null">
+				 crd_len,
+			</if>
+			<if test="crdTyp != null">
+				 crd_typ,
+			</if>
+			<if test="expDtFlg != null">
+				 exp_dt_flg,
+			</if>
+			<if test="crdNm != null">
+				 crd_nm,
+			</if>
+			<if test="intMod != null">
+				 int_mod,
+			</if>
+			<if test="bnkTyp != null">
+				 bnk_typ,
+			</if>
+			<if test="fitNo != null">
+				 fit_no,
+			</if>
+			<if test="bnkValue != null">
+				 bnk_value,
+			</if>
+			<if test="bnkNm != null">
+				 bnk_nm,
+			</if>
+			<if test="bnkCode != null">
+				 bnk_code,
+			</if>
+			<if test="tmSmp != null">
+				 tm_smp,
+			</if>
+			<if test="trackLen1 != null">
+				 track_len1,
+			</if>
+			<if test="trackLen2 != null">
+				 track_len2,
+			</if>
+			<if test="trackLen3 != null">
+				 track_len3,
+			</if>
+			<if test="trackByte1 != null">
+				 track_byte1,
+			</if>
+			<if test="trackByte2 != null">
+				 track_byte2,
+			</if>
+			<if test="trackByte3 != null">
+				 track_byte3,
+			</if>
+			<if test="atm != null">
+				 atm,
+			</if>
+			<if test="pos != null">
+				 pos,
+			</if>
+			<if test="crdOfs2 != null">
+				 crd_ofs2,
+			</if>
+			<if test="crdOfs3 != null">
+				 crd_ofs3,
+			</if>
+			<if test="fitOfs2 != null">
+				 fit_ofs2,
+			</if>
+			<if test="fitOfs3 != null">
+				 fit_ofs3,
+			</if>
+			<if test="foreignCarFlag != null">
+				 foreign_car_flag,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="uuid!=null">
+				 #{uuid},
+			</if>
+			<if test="fitTrk!=null">
+				 #{fitTrk},
+			</if>
+			<if test="fitOfs!=null">
+				 #{fitOfs},
+			</if>
+			<if test="fitCtt!=null">
+				 #{fitCtt},
+			</if>
+			<if test="fitLen!=null">
+				 #{fitLen},
+			</if>
+			<if test="crdTrk!=null">
+				 #{crdTrk},
+			</if>
+			<if test="crdOfs!=null">
+				 #{crdOfs},
+			</if>
+			<if test="crdLen!=null">
+				 #{crdLen},
+			</if>
+			<if test="crdTyp!=null">
+				 #{crdTyp},
+			</if>
+			<if test="expDtFlg!=null">
+				 #{expDtFlg},
+			</if>
+			<if test="crdNm!=null">
+				 #{crdNm},
+			</if>
+			<if test="intMod!=null">
+				 #{intMod},
+			</if>
+			<if test="bnkTyp!=null">
+				 #{bnkTyp},
+			</if>
+			<if test="fitNo!=null">
+				 #{fitNo},
+			</if>
+			<if test="bnkValue!=null">
+				 #{bnkValue},
+			</if>
+			<if test="bnkNm!=null">
+				 #{bnkNm},
+			</if>
+			<if test="bnkCode!=null">
+				 #{bnkCode},
+			</if>
+			<if test="tmSmp!=null">
+				 #{tmSmp},
+			</if>
+			<if test="trackLen1!=null">
+				 #{trackLen1},
+			</if>
+			<if test="trackLen2!=null">
+				 #{trackLen2},
+			</if>
+			<if test="trackLen3!=null">
+				 #{trackLen3},
+			</if>
+			<if test="trackByte1!=null">
+				 #{trackByte1},
+			</if>
+			<if test="trackByte2!=null">
+				 #{trackByte2},
+			</if>
+			<if test="trackByte3!=null">
+				 #{trackByte3},
+			</if>
+			<if test="atm!=null">
+				 #{atm},
+			</if>
+			<if test="pos!=null">
+				 #{pos},
+			</if>
+			<if test="crdOfs2!=null">
+				 #{crdOfs2},
+			</if>
+			<if test="crdOfs3!=null">
+				 #{crdOfs3},
+			</if>
+			<if test="fitOfs2!=null">
+				 #{fitOfs2},
+			</if>
+			<if test="fitOfs3!=null">
+				 #{fitOfs3},
+			</if>
+			<if test="foreignCarFlag!=null">
+				 #{foreignCarFlag},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 新增或修改 （匹配有值的字段）-->
+	<insert id="replaceInsert" parameterType="com.cn.hnust.pojo.TPtsBinUseful">
+		 REPLACE INTO t_pts_bin_useful
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="uuid != null">
+				 uuid,
+			</if>
+			<if test="fitTrk != null">
+				 fit_trk,
+			</if>
+			<if test="fitOfs != null">
+				 fit_ofs,
+			</if>
+			<if test="fitCtt != null">
+				 fit_ctt,
+			</if>
+			<if test="fitLen != null">
+				 fit_len,
+			</if>
+			<if test="crdTrk != null">
+				 crd_trk,
+			</if>
+			<if test="crdOfs != null">
+				 crd_ofs,
+			</if>
+			<if test="crdLen != null">
+				 crd_len,
+			</if>
+			<if test="crdTyp != null">
+				 crd_typ,
+			</if>
+			<if test="expDtFlg != null">
+				 exp_dt_flg,
+			</if>
+			<if test="crdNm != null">
+				 crd_nm,
+			</if>
+			<if test="intMod != null">
+				 int_mod,
+			</if>
+			<if test="bnkTyp != null">
+				 bnk_typ,
+			</if>
+			<if test="fitNo != null">
+				 fit_no,
+			</if>
+			<if test="bnkValue != null">
+				 bnk_value,
+			</if>
+			<if test="bnkNm != null">
+				 bnk_nm,
+			</if>
+			<if test="bnkCode != null">
+				 bnk_code,
+			</if>
+			<if test="tmSmp != null">
+				 tm_smp,
+			</if>
+			<if test="trackLen1 != null">
+				 track_len1,
+			</if>
+			<if test="trackLen2 != null">
+				 track_len2,
+			</if>
+			<if test="trackLen3 != null">
+				 track_len3,
+			</if>
+			<if test="trackByte1 != null">
+				 track_byte1,
+			</if>
+			<if test="trackByte2 != null">
+				 track_byte2,
+			</if>
+			<if test="trackByte3 != null">
+				 track_byte3,
+			</if>
+			<if test="atm != null">
+				 atm,
+			</if>
+			<if test="pos != null">
+				 pos,
+			</if>
+			<if test="crdOfs2 != null">
+				 crd_ofs2,
+			</if>
+			<if test="crdOfs3 != null">
+				 crd_ofs3,
+			</if>
+			<if test="fitOfs2 != null">
+				 fit_ofs2,
+			</if>
+			<if test="fitOfs3 != null">
+				 fit_ofs3,
+			</if>
+			<if test="foreignCarFlag != null">
+				 foreign_car_flag,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="uuid!=null">
+				 #{uuid},
+			</if>
+			<if test="fitTrk!=null">
+				 #{fitTrk},
+			</if>
+			<if test="fitOfs!=null">
+				 #{fitOfs},
+			</if>
+			<if test="fitCtt!=null">
+				 #{fitCtt},
+			</if>
+			<if test="fitLen!=null">
+				 #{fitLen},
+			</if>
+			<if test="crdTrk!=null">
+				 #{crdTrk},
+			</if>
+			<if test="crdOfs!=null">
+				 #{crdOfs},
+			</if>
+			<if test="crdLen!=null">
+				 #{crdLen},
+			</if>
+			<if test="crdTyp!=null">
+				 #{crdTyp},
+			</if>
+			<if test="expDtFlg!=null">
+				 #{expDtFlg},
+			</if>
+			<if test="crdNm!=null">
+				 #{crdNm},
+			</if>
+			<if test="intMod!=null">
+				 #{intMod},
+			</if>
+			<if test="bnkTyp!=null">
+				 #{bnkTyp},
+			</if>
+			<if test="fitNo!=null">
+				 #{fitNo},
+			</if>
+			<if test="bnkValue!=null">
+				 #{bnkValue},
+			</if>
+			<if test="bnkNm!=null">
+				 #{bnkNm},
+			</if>
+			<if test="bnkCode!=null">
+				 #{bnkCode},
+			</if>
+			<if test="tmSmp!=null">
+				 #{tmSmp},
+			</if>
+			<if test="trackLen1!=null">
+				 #{trackLen1},
+			</if>
+			<if test="trackLen2!=null">
+				 #{trackLen2},
+			</if>
+			<if test="trackLen3!=null">
+				 #{trackLen3},
+			</if>
+			<if test="trackByte1!=null">
+				 #{trackByte1},
+			</if>
+			<if test="trackByte2!=null">
+				 #{trackByte2},
+			</if>
+			<if test="trackByte3!=null">
+				 #{trackByte3},
+			</if>
+			<if test="atm!=null">
+				 #{atm},
+			</if>
+			<if test="pos!=null">
+				 #{pos},
+			</if>
+			<if test="crdOfs2!=null">
+				 #{crdOfs2},
+			</if>
+			<if test="crdOfs3!=null">
+				 #{crdOfs3},
+			</if>
+			<if test="fitOfs2!=null">
+				 #{fitOfs2},
+			</if>
+			<if test="fitOfs3!=null">
+				 #{fitOfs3},
+			</if>
+			<if test="foreignCarFlag!=null">
+				 #{foreignCarFlag},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.cn.hnust.pojo.TPtsBinUseful">
+		 UPDATE t_pts_bin_useful
+ 		 <set> 
+			<if test="fitTrk != null">
+				 fit_trk = #{fitTrk},
+			</if>
+			<if test="fitOfs != null">
+				 fit_ofs = #{fitOfs},
+			</if>
+			<if test="fitCtt != null">
+				 fit_ctt = #{fitCtt},
+			</if>
+			<if test="fitLen != null">
+				 fit_len = #{fitLen},
+			</if>
+			<if test="crdTrk != null">
+				 crd_trk = #{crdTrk},
+			</if>
+			<if test="crdOfs != null">
+				 crd_ofs = #{crdOfs},
+			</if>
+			<if test="crdLen != null">
+				 crd_len = #{crdLen},
+			</if>
+			<if test="crdTyp != null">
+				 crd_typ = #{crdTyp},
+			</if>
+			<if test="expDtFlg != null">
+				 exp_dt_flg = #{expDtFlg},
+			</if>
+			<if test="crdNm != null">
+				 crd_nm = #{crdNm},
+			</if>
+			<if test="intMod != null">
+				 int_mod = #{intMod},
+			</if>
+			<if test="bnkTyp != null">
+				 bnk_typ = #{bnkTyp},
+			</if>
+			<if test="fitNo != null">
+				 fit_no = #{fitNo},
+			</if>
+			<if test="bnkValue != null">
+				 bnk_value = #{bnkValue},
+			</if>
+			<if test="bnkNm != null">
+				 bnk_nm = #{bnkNm},
+			</if>
+			<if test="bnkCode != null">
+				 bnk_code = #{bnkCode},
+			</if>
+			<if test="tmSmp != null">
+				 tm_smp = #{tmSmp},
+			</if>
+			<if test="trackLen1 != null">
+				 track_len1 = #{trackLen1},
+			</if>
+			<if test="trackLen2 != null">
+				 track_len2 = #{trackLen2},
+			</if>
+			<if test="trackLen3 != null">
+				 track_len3 = #{trackLen3},
+			</if>
+			<if test="trackByte1 != null">
+				 track_byte1 = #{trackByte1},
+			</if>
+			<if test="trackByte2 != null">
+				 track_byte2 = #{trackByte2},
+			</if>
+			<if test="trackByte3 != null">
+				 track_byte3 = #{trackByte3},
+			</if>
+			<if test="atm != null">
+				 atm = #{atm},
+			</if>
+			<if test="pos != null">
+				 pos = #{pos},
+			</if>
+			<if test="crdOfs2 != null">
+				 crd_ofs2 = #{crdOfs2},
+			</if>
+			<if test="crdOfs3 != null">
+				 crd_ofs3 = #{crdOfs3},
+			</if>
+			<if test="fitOfs2 != null">
+				 fit_ofs2 = #{fitOfs2},
+			</if>
+			<if test="fitOfs3 != null">
+				 fit_ofs3 = #{fitOfs3},
+			</if>
+			<if test="foreignCarFlag != null">
+				 foreign_car_flag = #{foreignCarFlag},
+			</if>
+
+ 		 </set>
+		 WHERE uuid = #{uuid}
+	</update>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKey" parameterType="com.cn.hnust.pojo.TPtsBinUseful">
+		 UPDATE t_pts_bin_useful
+		 SET 
+			 fit_trk = #{fitTrk},
+			 fit_ofs = #{fitOfs},
+			 fit_ctt = #{fitCtt},
+			 fit_len = #{fitLen},
+			 crd_trk = #{crdTrk},
+			 crd_ofs = #{crdOfs},
+			 crd_len = #{crdLen},
+			 crd_typ = #{crdTyp},
+			 exp_dt_flg = #{expDtFlg},
+			 crd_nm = #{crdNm},
+			 int_mod = #{intMod},
+			 bnk_typ = #{bnkTyp},
+			 fit_no = #{fitNo},
+			 bnk_value = #{bnkValue},
+			 bnk_nm = #{bnkNm},
+			 bnk_code = #{bnkCode},
+			 tm_smp = #{tmSmp},
+			 track_len1 = #{trackLen1},
+			 track_len2 = #{trackLen2},
+			 track_len3 = #{trackLen3},
+			 track_byte1 = #{trackByte1},
+			 track_byte2 = #{trackByte2},
+			 track_byte3 = #{trackByte3},
+			 atm = #{atm},
+			 pos = #{pos},
+			 crd_ofs2 = #{crdOfs2},
+			 crd_ofs3 = #{crdOfs3},
+			 fit_ofs2 = #{fitOfs2},
+			 fit_ofs3 = #{fitOfs3},
+			 foreign_car_flag = #{foreignCarFlag}
+		 WHERE uuid = #{uuid}
+	</update>
+
+	<!-- 批量插入-->
+	<insert id="insertBatch" parameterType="java.util.List">
+		 INSERT INTO t_pts_bin_useful
+			(uuid,fit_trk,fit_ofs,fit_ctt,fit_len,crd_trk,crd_ofs,crd_len,crd_typ,exp_dt_flg,crd_nm,int_mod,bnk_typ,fit_no,bnk_value,bnk_nm,bnk_code,tm_smp,track_len1,track_len2,track_len3,track_byte1,track_byte2,track_byte3,atm,pos,crd_ofs2,crd_ofs3,fit_ofs2,fit_ofs3,foreign_car_flag) 
+		 VALUES 
+		 <foreach collection ="list" item="reddemCode" index= "index" separator =",">
+			(
+				#{reddemCode.uuid},
+				#{reddemCode.fitTrk},
+				#{reddemCode.fitOfs},
+				#{reddemCode.fitCtt},
+				#{reddemCode.fitLen},
+				#{reddemCode.crdTrk},
+				#{reddemCode.crdOfs},
+				#{reddemCode.crdLen},
+				#{reddemCode.crdTyp},
+				#{reddemCode.expDtFlg},
+				#{reddemCode.crdNm},
+				#{reddemCode.intMod},
+				#{reddemCode.bnkTyp},
+				#{reddemCode.fitNo},
+				#{reddemCode.bnkValue},
+				#{reddemCode.bnkNm},
+				#{reddemCode.bnkCode},
+				#{reddemCode.tmSmp},
+				#{reddemCode.trackLen1},
+				#{reddemCode.trackLen2},
+				#{reddemCode.trackLen3},
+				#{reddemCode.trackByte1},
+				#{reddemCode.trackByte2},
+				#{reddemCode.trackByte3},
+				#{reddemCode.atm},
+				#{reddemCode.pos},
+				#{reddemCode.crdOfs2},
+				#{reddemCode.crdOfs3},
+				#{reddemCode.fitOfs2},
+				#{reddemCode.fitOfs3},
+				#{reddemCode.foreignCarFlag}
+			)
+		 </foreach>
+	</insert>
+
+</mapper>

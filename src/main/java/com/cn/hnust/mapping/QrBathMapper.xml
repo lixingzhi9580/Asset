@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.hnust.mapper.QrBathMapper">
+
+	<!--实体映射-->
+	<resultMap id="qrBath" type="com.cn.hnust.pojo.QrBath">
+		<!---->
+		<id property="uuid" column="uuid" />
+		<!---->
+		<result property="tranDt" column="tran_dt" />
+		<!---->
+		<result property="tranTm" column="tran_tm" />
+		<!---->
+		<result property="chas" column="chas" />
+		<!---->
+		<result property="cham" column="cham" />
+		<!---->
+		<result property="chah" column="chah" />
+		<!---->
+		<result property="runDt" column="run_dt" />
+		<!---->
+		<result property="cha" column="cha" />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		uuid,	tran_dt,	tran_tm,	chas,	cham,	chah,	run_dt,	cha
+	</sql>
+
+	<!-- 通用查询条件-->
+	<sql id="dynamicWhere">
+		<where>
+			<if test="uuid != null"> AND uuid = #{uuid} </if>
+			<if test="tranDt != null"> AND tran_dt = #{tranDt} </if>
+			<if test="tranTm != null"> AND tran_tm = #{tranTm} </if>
+			<if test="chas != null"> AND chas = #{chas} </if>
+			<if test="cham != null"> AND cham = #{cham} </if>
+			<if test="chah != null"> AND chah = #{chah} </if>
+			<if test="runDt != null"> AND run_dt = #{runDt} </if>
+			<if test="cha != null"> AND cha = #{cha} </if>
+		</where>
+	</sql>
+
+	<!-- 查询所有数据 -->
+	<select id="selectAll" resultMap="qrBath">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM qr_bath
+	</select>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="qrBath" parameterType="java.lang.Integer">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM qr_bath
+		 WHERE uuid = #{uuid}
+	</select>
+
+	<!-- 查询（根据实体查询） -->
+	<select id="selectBySelected" resultMap="qrBath">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM qr_bath
+		 <include refid="dynamicWhere"/>
+	</select>
+
+	<!--删除：根据主键ID删除-->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		 DELETE FROM qr_bath
+		 WHERE uuid = #{uuid}
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="com.cn.hnust.pojo.QrBath">
+		 INSERT INTO qr_bath
+ 			(uuid,tran_dt,tran_tm,chas,cham,chah,run_dt,cha) 
+		 VALUES 
+ 			(#{uuid},#{tranDt},#{tranTm},#{chas},#{cham},#{chah},#{runDt},#{cha}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.cn.hnust.pojo.QrBath">
+		 INSERT INTO qr_bath
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="uuid != null">
+				 uuid,
+			</if>
+			<if test="tranDt != null">
+				 tran_dt,
+			</if>
+			<if test="tranTm != null">
+				 tran_tm,
+			</if>
+			<if test="chas != null">
+				 chas,
+			</if>
+			<if test="cham != null">
+				 cham,
+			</if>
+			<if test="chah != null">
+				 chah,
+			</if>
+			<if test="runDt != null">
+				 run_dt,
+			</if>
+			<if test="cha != null">
+				 cha,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="uuid!=null">
+				 #{uuid},
+			</if>
+			<if test="tranDt!=null">
+				 #{tranDt},
+			</if>
+			<if test="tranTm!=null">
+				 #{tranTm},
+			</if>
+			<if test="chas!=null">
+				 #{chas},
+			</if>
+			<if test="cham!=null">
+				 #{cham},
+			</if>
+			<if test="chah!=null">
+				 #{chah},
+			</if>
+			<if test="runDt!=null">
+				 #{runDt},
+			</if>
+			<if test="cha!=null">
+				 #{cha},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 新增或修改 （匹配有值的字段）-->
+	<insert id="replaceInsert" parameterType="com.cn.hnust.pojo.QrBath">
+		 REPLACE INTO qr_bath
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="uuid != null">
+				 uuid,
+			</if>
+			<if test="tranDt != null">
+				 tran_dt,
+			</if>
+			<if test="tranTm != null">
+				 tran_tm,
+			</if>
+			<if test="chas != null">
+				 chas,
+			</if>
+			<if test="cham != null">
+				 cham,
+			</if>
+			<if test="chah != null">
+				 chah,
+			</if>
+			<if test="runDt != null">
+				 run_dt,
+			</if>
+			<if test="cha != null">
+				 cha,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="uuid!=null">
+				 #{uuid},
+			</if>
+			<if test="tranDt!=null">
+				 #{tranDt},
+			</if>
+			<if test="tranTm!=null">
+				 #{tranTm},
+			</if>
+			<if test="chas!=null">
+				 #{chas},
+			</if>
+			<if test="cham!=null">
+				 #{cham},
+			</if>
+			<if test="chah!=null">
+				 #{chah},
+			</if>
+			<if test="runDt!=null">
+				 #{runDt},
+			</if>
+			<if test="cha!=null">
+				 #{cha},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.cn.hnust.pojo.QrBath">
+		 UPDATE qr_bath
+ 		 <set> 
+			<if test="tranDt != null">
+				 tran_dt = #{tranDt},
+			</if>
+			<if test="tranTm != null">
+				 tran_tm = #{tranTm},
+			</if>
+			<if test="chas != null">
+				 chas = #{chas},
+			</if>
+			<if test="cham != null">
+				 cham = #{cham},
+			</if>
+			<if test="chah != null">
+				 chah = #{chah},
+			</if>
+			<if test="runDt != null">
+				 run_dt = #{runDt},
+			</if>
+			<if test="cha != null">
+				 cha = #{cha},
+			</if>
+
+ 		 </set>
+		 WHERE uuid = #{uuid}
+	</update>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKey" parameterType="com.cn.hnust.pojo.QrBath">
+		 UPDATE qr_bath
+		 SET 
+			 tran_dt = #{tranDt},
+			 tran_tm = #{tranTm},
+			 chas = #{chas},
+			 cham = #{cham},
+			 chah = #{chah},
+			 run_dt = #{runDt},
+			 cha = #{cha}
+		 WHERE uuid = #{uuid}
+	</update>
+
+	<!-- 批量插入-->
+	<insert id="insertBatch" parameterType="java.util.List">
+		 INSERT INTO qr_bath
+			(uuid,tran_dt,tran_tm,chas,cham,chah,run_dt,cha) 
+		 VALUES 
+		 <foreach collection ="list" item="reddemCode" index= "index" separator =",">
+			(
+				#{reddemCode.uuid},
+				#{reddemCode.tranDt},
+				#{reddemCode.tranTm},
+				#{reddemCode.chas},
+				#{reddemCode.cham},
+				#{reddemCode.chah},
+				#{reddemCode.runDt},
+				#{reddemCode.cha}
+			)
+		 </foreach>
+	</insert>
+
+</mapper>

@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ISO8583>
+	<POSHeader>
+		<Item field_id='300' key_name='SZICBC_CON'        length_type='CONST'  data_type='CharASCII'    length='8'/> <!-- 固定值 -->
+		<Item field_id='301' key_name='SZICBC_MNO'        length_type='CONST'  data_type='CharASCII'    length='12'/> <!-- 商户号 -->	
+		<Item field_id='302' key_name='SZICBC_TPDU'       length_type='CONST'  data_type='ASCBCD'       length='10'/> <!-- 报文头 -->		
+	</POSHeader> 
+	<Item field_id='0'   key_name='MSG_ID'        length_type='CONST'  data_type='ASCBCD'     length='4'/> <!-- 消息类型 -->
+	<Item field_id='1'   key_name='BIT_MAP'       length_type='CONST'  data_type='BIT'        length='16'/> <!-- 位图 -->
+	<Item field_id='2'   key_name='IBPAN'         length_type='VAR2'   data_type='ASCBCD'     length='19' align_mode="left" var_type="bin"/> <!-- 主帐号 -->
+	<Item field_id='3'   key_name='IBPRO_COD'     length_type='CONST'  data_type='ASCBCD'     length='6'/> <!-- 交易处理码 -->
+	<Item field_id='4'   key_name='IBTTXN_AMT'    length_type='CONST'  data_type='ASCBCD'     length='12' align_mode="right"/> <!-- 交易金额 -->
+	<Item field_id='5'   key_name='IBSET_AMT'     length_type='CONST'  data_type='ASCBCD'     length='12' align_mode="right"/> <!-- 结算金额 -->
+	<Item field_id='6'   key_name='IBTIPS'        length_type='CONST'  data_type='ASCBCD'     length='12'/> <!-- 持卡人扣账金额:暂不使用 -->
+	<Item field_id='7'   key_name='IBC_DTTM'      length_type='CONST'  data_type='ASCBCD'     length='10'/> <!-- 交易传输时间:暂不使用 -->
+	<Item field_id='8'   key_name='IBOFFLINE'     length_type='CONST'  data_type='CharASCII'  length='1'/> <!-- 暂不使用 -->
+	<Item field_id='9'   key_name='IBSET_CON_RAT' length_type='CONST'  data_type='ASCBCD'     length='8'/>  <!-- 结算汇率 -->
+	<Item field_id='10'  key_name='F10'           length_type='CONST'  data_type='ASCBCD'     length='8'/>  <!-- 持卡人扣款汇率:暂不使用 -->
+	<Item field_id='11'  key_name='IBCSEQ_NO'     length_type='CONST'  data_type='ASCBCD'     length='6'/>  <!-- 系统跟踪号 -->
+	<Item field_id='12'  key_name='IBCTXN_TM'     length_type='CONST'  data_type='ASCBCD'     length='6'/>  <!-- 受卡方所在地时间 -->
+	<Item field_id='13'  key_name='IBCTXN_DT'     length_type='CONST'  data_type='ASCBCD'     length='8'/>  <!-- 受卡方所在地日期 -->
+	<Item field_id='14'  key_name='IBEXP_DT'      length_type='CONST'  data_type='ASCBCD'     length='4'/>  <!-- 卡有效期 -->
+	<Item field_id='15'  key_name='IBOCTX_DT'     length_type='CONST'  data_type='ASCBCD'     length='8'/>  <!-- 清算日期:暂不使用 -->
+	<Item field_id='16'  key_name='IBINT'         length_type='CONST'  data_type='CharASCII'  length='1'/>  <!-- 兑换日期:暂不使用 -->
+	<Item field_id='17'  key_name='F17'           length_type='CONST'  data_type='ASCBCD'     length='4'/>  <!-- 中行交换中心的清算日期:暂不使用 -->
+	<Item field_id='18'  key_name='IBLOT'         length_type='CONST'  data_type='ASCBCD'     length='5'/>  <!-- 商户类型:暂不使用 -->
+	<Item field_id='19'  key_name='F19'           length_type='CONST'  data_type='ASCBCD'     length='3'/>  <!-- 暂不使用:暂不使用 -->
+	<Item field_id='20'  key_name='F20'           length_type='CONST'  data_type='ASCBCD'     length='3'/>  <!-- 暂不使用:暂不使用 -->
+	<Item field_id='21'  key_name='IBVER_NUM'     length_type='CONST'  data_type='CharASCII'  length='7'/> <!-- 暂不使用 -->
+	<Item field_id='22'  key_name='IBIN_MOD'      length_type='CONST'  data_type='ASCBCD'     length='3' align_mode="right" />  <!-- 服务点输入方式码 -->
+	<Item field_id='23'  key_name='IBSEP_NUM'     length_type='CONST'  data_type='ASCBCD'     length='3'/>  <!-- 卡片序列号 -->
+	<Item field_id='24'  key_name='F24'           length_type='CONST'  data_type='ASCBCD'     length='3'/>  <!-- 国际网络标识域 -->
+	<Item field_id='25'  key_name='F25'           length_type='CONST'  data_type='ASCBCD'     length='2'/>  <!-- 服务点条件码 -->
+	<Item field_id='26'  key_name='F26'           length_type='CONST'  data_type='ASCBCD'     length='2'/>  <!-- 服务点PIN获取码 -->
+	<Item field_id='27'  key_name='IBAUT_LEN'     length_type='CONST'  data_type='ASCBCD'     length='1'/> <!-- 暂不使用 -->
+	<Item field_id='28'  key_name='IBSIGN'        length_type='CONST'  data_type='ASCBCD'     length='2'/>  <!-- 暂不使用 -->
+	<Item field_id='29'  key_name='F29'           length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='30'  key_name='F30'           length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='31'  key_name='F31'           length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='32'  key_name='F32'           length_type='VAR2'   data_type='ASCBCD'     length='11' align_mode="left" var_type="bin"/> <!-- 受理方标识码:暂不使用 -->
+	<Item field_id='33'  key_name='F33'           length_type='VAR2'   data_type='ASCBCD'     length='11' var_type="bin"/> <!-- 暂不使用 -->
+	<Item field_id='34'  key_name='F34'           length_type='VAR2'   data_type='CharASCII'  length='28' var_type="bin"/> <!-- 标识持卡人帐户或者关系:暂不使用 -->
+	<Item field_id='35'  key_name='IBTRACK_2'     length_type='VAR3'  data_type='CharASCII'    length='37' align_mode="left" var_type="bin"/> <!-- 第二磁道数据 -->
+	<Item field_id='36'  key_name='IBTRACK_3'     length_type='VAR3'   data_type='CharASCII' 	length='104' align_mode="left" var_type="bin"/><!-- 第三磁道数据 -->
+	<Item field_id='37'  key_name='IBREF_NUM'     length_type='CONST'  data_type='CharASCII'  length='23'/> <!-- 检索参考号 -->
+	<Item field_id='38'  key_name='IBAUT_CD'      length_type='CONST'  data_type='CharASCII'  length='6'/>  <!-- 授权标识应答码 -->
+	<Item field_id='39'  key_name='CPSCOD'        length_type='CONST'  data_type='CharASCII'  length='2'/>  <!-- 应答码 -->
+	<Item field_id='40'  key_name='IBTRM_NO3'     length_type='CONST'  data_type='CharASCII'  length='3'/> <!-- 暂不使用 -->
+	<Item field_id='41'  key_name='IBTRM_NO'      length_type='CONST'  data_type='CharASCII'  length='15'/>  <!-- 受卡机终端标识码 -->
+	<Item field_id='42'  key_name='IBMERC_ID'     length_type='CONST'  data_type='CharASCII'  length='12'/> <!-- 受卡方标识码 -->
+	<Item field_id='43'  key_name='IBMERC_NM'     length_type='CONST'  data_type='CharASCII'  length='40'/> <!-- 卡接受者的名称和地址:暂不使用 -->
+	<Item field_id='44'  key_name='IBADD_DATA'    length_type='VAR2'   data_type='CharASCII'  length='13' var_type="bin"/>    <!-- 附加响应数据 -->
+	<Item field_id='45'  key_name='F45'           length_type='VAR2'   data_type='CharASCII'  length='79' var_type="bin"/> <!-- 暂不使用 -->
+	<Item field_id='46'  key_name='F46'           length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='47'  key_name='F47'           length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='48'  key_name='IBPRI_USE'     length_type='VAR2'   data_type='ASCBCD'  length='19' var_type="bin" />   <!-- 附加数据 -->
+	<Item field_id='49'  key_name='IBCCY'         length_type='CONST'  data_type='CharASCII'  length='3'/>  <!-- Field4货币代码 -->
+	<Item field_id='50'  key_name='IBSET_CUR_COD' length_type='CONST'  data_type='ASCBCD'     length='3'/>  <!-- Field5货币代码 -->
+	<Item field_id='51'  key_name='F51'           length_type='CONST'  data_type='ASCBCD'     length='3'/>  <!-- 暂不使用 -->
+	<Item field_id='52'  key_name='IBPIN_DATA'    length_type='CONST'  data_type='BIT'        length='16'/>  <!-- 个人标识码数据 -->
+	<Item field_id='53'  key_name='IBSECUR_INF'   length_type='CONST'  data_type='ASCBCD'     length='16'/> <!-- 安全控制信息 -->
+	<Item field_id='54'  key_name='IBTOTAL'       length_type='VAR3'   data_type='CharASCII'  length='120' var_type="bin"/> <!-- 余额 -->
+	<Item field_id='55'  key_name='IBIC_DAT'      length_type='VAR3'   data_type='CharASCII'  length='255' var_type="bin" convert='hex'/> <!-- IC卡数据域 -->
+	<Item field_id='56'  key_name='F56'           length_type='VAR3'   data_type='CharASCII'  length='999' var_type="bin"/> <!-- 暂不使用 -->
+	<Item field_id='57'  key_name='IBRESERVED'    length_type='VAR3'   data_type='CharASCII'  length='999' var_type="bin"/> <!-- 用于将来的使用 -->
+	<Item field_id='58'  key_name='IBERR_INFO'    length_type='VAR3'   data_type='CharASCII'  length='100' var_type="bin"/> <!-- PBOC电子钱包标准的交易信息 -->
+	<Item field_id='59'  key_name='IBRE_IN'       length_type='VAR3'   data_type='CharASCII'  length='600' var_type="bin"/>   <!-- 暂不使用 -->
+	<Item field_id='60'  key_name='IBRW_ABILITY'  length_type='CONST'   data_type='CharASCII'	length='8' align_mode="left" var_type="bin"/>  <!-- 自定义域 -->
+	<Item field_id='61'  key_name='IBORI_MES'     length_type='VAR3'   data_type='ASCBCD'     length='999' align_mode="left" var_type="bin"/>  <!-- 原始信息域 -->
+	<Item field_id='62'  key_name='IBTRM_KEY'     length_type='CONST'   data_type='ASCBCD'  	length='150' var_type="bin"/>  <!-- 自定义域 -->
+	<Item field_id='63'  key_name='IBRESE_PRI_63' length_type='VAR3'   data_type='CharASCII'  length='999' var_type="bin"/>  <!-- 自定义域 -->
+	<Item field_id='64'  key_name='MAC'           length_type='CONST'  data_type='BIT'        length='16' /> <!-- 消息签定码 -->
+	<Item field_id='65'  key_name='F65'           length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='66'  key_name='F66'           length_type='CONST'  data_type='CharASCII'  length='1'/>  <!-- 暂不使用 -->
+	<Item field_id='67'  key_name='F67'           length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='68'  key_name='F68'           length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='69'  key_name='F69'           length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='70'  key_name='F70'           length_type='CONST'  data_type='CharASCII'  length='3'/>  <!-- 暂不使用 -->
+	<Item field_id='71'  key_name='F71'           length_type='CONST'  data_type='ASCBCD'     length='11'/> <!-- 暂不使用 -->
+	<Item field_id='72'  key_name='F72'           length_type='CONST'  data_type='ASCBCD'     length='1'/>  <!-- 暂不使用 -->
+	<Item field_id='73'  key_name='F73'           length_type='CONST'  data_type='ASCBCD'     length='4' align_mode="right"/> <!-- 暂不使用 -->
+	<Item field_id='74'  key_name='F74'           length_type='VAR3'   data_type='CharASCII'  length='999' var_type="bin"/> <!-- 暂不使用 -->
+	<Item field_id='75'  key_name='F75'           length_type='VAR3'   data_type='BIT'        length='999' var_type="bin"/> <!-- 暂不使用 -->
+	<Item field_id='76'  key_name='F76'           length_type='CONST'  data_type='ASCBCD'     length='10' align_mode="right"/> <!-- 暂不使用 -->
+	<Item field_id='77'  key_name='F77'           length_type='CONST'  data_type='ASCBCD'     length='8' align_mode="right"/>  <!-- 暂不使用 -->
+	<Item field_id='78'  key_name='F78'           length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='79'  key_name='F79'           length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='80'  key_name='F80'           length_type='CONST'  data_type='ASCBCD'     length='10' align_mode="right"/> <!-- 暂不使用 -->
+	<Item field_id='81'  key_name='F81'           length_type='CONST'  data_type='ASCBCD'     length='10' align_mode="right"/> <!-- 暂不使用 -->
+	<Item field_id='82'  key_name='F82'           length_type='CONST'  data_type='CharASCII'  length='12'/> <!-- 暂不使用 -->
+	<Item field_id='83'  key_name='F83'           length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='84'  key_name='F84'           length_type='CONST'  data_type='CharASCII'  length='12'/> <!-- 暂不使用 -->
+	<Item field_id='85'  key_name='F85'           length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='86'  key_name='F86'           length_type='CONST'  data_type='CharASCII'  length='16'/> <!-- 暂不使用 -->
+	<Item field_id='87'  key_name='F87'           length_type='CONST'  data_type='CharASCII'  length='16'/> <!-- 暂不使用 -->
+	<Item field_id='88'  key_name='F88'           length_type='VAR2'   data_type='CharASCII'  length='40' var_type="bin"/> <!-- 暂不使用 -->
+	<Item field_id='89'  key_name='F89'           length_type='CONST'  data_type='ASCBCD'     length='10' align_mode="right"/> <!-- 暂不使用 -->
+	<Item field_id='90'  key_name='F90'           length_type='CONST'  data_type='CharASCII'  length='42'/> <!-- 暂不使用 -->
+	<Item field_id='91'  key_name='F91'           length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='92'  key_name='F92'           length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='93'  key_name='F93'           length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='94'  key_name='F94'           length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='95'  key_name='F95'           length_type='CONST'  data_type='CharASCII'  length='42'/> <!-- 暂不使用 -->
+	<Item field_id='96'  key_name='F96'           length_type='CONST'  data_type='BIT'        length='8'/>  <!-- 暂不使用 -->
+	<Item field_id='97'  key_name='F97'           length_type='CONST'  data_type='CharASCII'  length='17'/> <!-- 暂不使用 -->
+	<Item field_id='98'  key_name='F98'           length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='99'  key_name='F99'           length_type='VAR2'   data_type='CharASCII'  length='11' var_type="bin"/> <!-- 暂不使用 -->
+	<Item field_id='100' key_name='F100'          length_type='VAR2'   data_type='CharASCII'  length='11' var_type="bin"/> <!-- 暂不使用 -->
+	<Item field_id='101' key_name='F101'          length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='102' key_name='F102'          length_type='VAR2'   data_type='CharASCII'  length='28' var_type="bin"/> <!-- 暂不使用 -->
+	<Item field_id='103' key_name='F103'          length_type='VAR2'   data_type='CharASCII'  length='28' var_type="bin"/> <!-- 暂不使用 -->
+	<Item field_id='104' key_name='F104'          length_type='CONST'  data_type='CharASCII'  length='16'/> <!-- 暂不使用 -->
+	<Item field_id='105' key_name='F105'          length_type='VAR3'   data_type='CharASCII'  length='320' var_type="bin"/><!-- 暂不使用 -->
+	<Item field_id='106' key_name='F106'          length_type='CONST'  data_type='ASCBCD'     length='2'/>  <!-- 暂不使用 -->
+	<Item field_id='107' key_name='F107'          length_type='VAR2'   data_type='CharASCII'  length='16' var_type="bin"/> <!-- 暂不使用 -->
+	<Item field_id='108' key_name='F108'          length_type='CONST'  data_type='ASCBCD'     length='6' align_mode="right"/> <!-- 暂不使用 -->
+	<Item field_id='109' key_name='F109'          length_type='CONST'  data_type='ASCBCD'     length='1'/> <!-- 暂不使用 -->
+	<Item field_id='110' key_name='F110'          length_type='CONST'  data_type='ASCBCD'     length='1'/> <!-- 暂不使用 -->
+	<Item field_id='111' key_name='F111'          length_type='VAR2'   data_type='CharASCII'  length='20' var_type="bin"/><!-- 暂不使用 -->
+	<Item field_id='112' key_name='F112'          length_type='VAR3'   data_type='CharASCII'  length='999' var_type="bin"/> <!-- 暂不使用 -->
+	<Item field_id='113' key_name='F113'          length_type='CONST'  data_type='CharASCII'  length='6' align_mode="left"/> <!-- 暂不使用 -->
+	<Item field_id='114' key_name='F114'          length_type='CONST'  data_type='CharASCII'  length='10' align_mode="left"/> <!-- 暂不使用 -->
+	<Item field_id='115' key_name='F115'          length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='116' key_name='F116'          length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='117' key_name='F117'          length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='118' key_name='F118'          length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='119' key_name='F119'          length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='120' key_name='F120'          length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='121' key_name='F121'          length_type='VAR3'   data_type='CharASCII'  length='100' var_type="bin"/><!-- 暂不使用 -->
+	<Item field_id='122' key_name='F122'          length_type='VAR3'   data_type='CharASCII'  length='100' var_type="bin"/><!-- 暂不使用 -->
+	<Item field_id='123' key_name='F123'          length_type='VAR3'   data_type='CharASCII'  length='100' var_type="bin"/><!-- 暂不使用 -->
+	<Item field_id='124' key_name='F124'          length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='125' key_name='F125'          length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='126' key_name='F126'          length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='127' key_name='F127'          length_type='CONST'  data_type='CharASCII'  length='10'/> <!-- 暂不使用 -->
+	<Item field_id='128' key_name='F128'          length_type='CONST'  data_type='BIT'        length='16'/> <!-- 暂不使用 -->
+</ISO8583>         

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.hnust.mapper.DhDescMapper">
+
+	<!--实体映射-->
+	<resultMap id="dhDesc" type="com.cn.hnust.pojo.DhDesc">
+		<!---->
+		<id property="uuid" column="uuid" />
+		<!---->
+		<result property="gameOrdersn" column="game_ordersn" />
+		<!---->
+		<result property="gameKey" column="game_key" />
+		<!---->
+		<result property="gameValue" column="game_value" />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 uuid,	game_ordersn,	game_key,	game_value
+	</sql>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="dhDesc" parameterType="java.lang.Integer">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM dh_desc
+		 WHERE uuid = #{uuid}
+	</select>
+	
+	<!-- 查询（根据Sn查询） -->
+	<select id="selectBySn" resultMap="dhDesc" parameterType="String">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM dh_desc
+		 WHERE game_ordersn = #{gameOrdersn}
+	</select>
+
+	<!--删除：根据主键ID删除-->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		 DELETE FROM dh_desc
+		 WHERE uuid = #{uuid}
+	</delete>
+	
+	<!--删除：根据主键Sn删除-->
+	<delete id="delectBySn" parameterType="String">
+		 DELETE FROM dh_desc
+		 WHERE game_ordersn = #{sn}
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="com.cn.hnust.pojo.DhDesc">
+		 INSERT INTO dh_desc
+ 		(uuid,game_ordersn,game_key,game_value) 
+		 VALUES 
+ 		(#{uuid},#{gameOrdersn},#{gameKey},#{gameValue}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.cn.hnust.pojo.DhDesc">
+		 INSERT INTO dh_desc
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="uuid != null">
+				 uuid,
+			</if>
+			<if test="gameOrdersn != null">
+				 game_ordersn,
+			</if>
+			<if test="gameKey != null">
+				 game_key,
+			</if>
+			<if test="gameValue != null">
+				 game_value,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="uuid!=null">
+				 #{uuid},
+			</if>
+			<if test="gameOrdersn!=null">
+				 #{gameOrdersn},
+			</if>
+			<if test="gameKey!=null">
+				 #{gameKey},
+			</if>
+			<if test="gameValue!=null">
+				 #{gameValue},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 新增或修改 （匹配有值的字段）-->
+	<insert id="replaceInsert" parameterType="com.cn.hnust.pojo.DhDesc">
+		 REPLACE INTO dh_desc
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="uuid != null">
+				 uuid,
+			</if>
+			<if test="gameOrdersn != null">
+				 game_ordersn,
+			</if>
+			<if test="gameKey != null">
+				 game_key,
+			</if>
+			<if test="gameValue != null">
+				 game_value,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="uuid!=null">
+				 #{uuid},
+			</if>
+			<if test="gameOrdersn!=null">
+				 #{gameOrdersn},
+			</if>
+			<if test="gameKey!=null">
+				 #{gameKey},
+			</if>
+			<if test="gameValue!=null">
+				 #{gameValue},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.cn.hnust.pojo.DhDesc">
+		 UPDATE dh_desc
+ 		 <set> 
+			<if test="gameOrdersn != null">
+				 game_ordersn = #{gameOrdersn},
+			</if>
+			<if test="gameKey != null">
+				 game_key = #{gameKey},
+			</if>
+			<if test="gameValue != null">
+				 game_value = #{gameValue},
+			</if>
+
+ 		 </set>
+		 WHERE uuid = #{uuid}
+	</update>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKey" parameterType="com.cn.hnust.pojo.DhDesc">
+		 UPDATE dh_desc
+		 SET 
+			 game_ordersn = #{gameOrdersn},
+			 game_key = #{gameKey},
+			 game_value = #{gameValue}
+		 WHERE uuid = #{uuid}
+	</update>
+
+</mapper>

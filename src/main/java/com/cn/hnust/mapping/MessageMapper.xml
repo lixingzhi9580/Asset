@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.hnust.mapper.MessageMapper">
+
+	<!--实体映射-->
+	<resultMap id="message" type="com.cn.hnust.pojo.Message">
+		<!---->
+		<id property="uuid" column="uuid" />
+		<!---->
+		<result property="data" column="data" />
+		<!---->
+		<result property="request" column="request" />
+		<!---->
+		<result property="Response" column="Response" />
+		<!---->
+		<result property="flg" column="flg" />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		uuid,	data,	request,	Response,	flg
+	</sql>
+
+	<!-- 通用查询条件-->
+	<sql id="dynamicWhere">
+		<where>
+			<if test="uuid != null"> AND uuid = #{uuid} </if>
+			<if test="data != null"> AND data = #{data} </if>
+			<if test="request != null"> AND request = #{request} </if>
+			<if test="Response != null"> AND Response = #{Response} </if>
+			<if test="flg != null"> AND flg = #{flg} </if>
+		</where>
+	</sql>
+
+	<!-- 查询所有数据 -->
+	<select id="selectAll" resultMap="message">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM message
+	</select>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="message" parameterType="java.lang.String">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM message
+		 WHERE uuid = #{uuid}
+	</select>
+
+	<!-- 查询（根据实体查询） -->
+	<select id="selectBySelected" resultMap="message">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM message
+		 <include refid="dynamicWhere"/>
+	</select>
+
+	<!--删除：根据主键ID删除-->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		 DELETE FROM message
+		 WHERE uuid = #{uuid}
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="com.cn.hnust.pojo.Message">
+		 INSERT INTO message
+ 		(uuid,data,request,Response,flg) 
+		 VALUES 
+ 		(#{uuid},#{data},#{request},#{Response},#{flg}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.cn.hnust.pojo.Message">
+		 INSERT INTO message
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="uuid != null">
+				 uuid,
+			</if>
+			<if test="data != null">
+				 data,
+			</if>
+			<if test="request != null">
+				 request,
+			</if>
+			<if test="Response != null">
+				 Response,
+			</if>
+			<if test="flg != null">
+				 flg,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="uuid!=null">
+				 #{uuid},
+			</if>
+			<if test="data!=null">
+				 #{data},
+			</if>
+			<if test="request!=null">
+				 #{request},
+			</if>
+			<if test="Response!=null">
+				 #{Response},
+			</if>
+			<if test="flg!=null">
+				 #{flg},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 新增或修改 （匹配有值的字段）-->
+	<insert id="replaceInsert" parameterType="com.cn.hnust.pojo.Message">
+		 REPLACE INTO message
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="uuid != null">
+				 uuid,
+			</if>
+			<if test="data != null">
+				 data,
+			</if>
+			<if test="request != null">
+				 request,
+			</if>
+			<if test="Response != null">
+				 Response,
+			</if>
+			<if test="flg != null">
+				 flg,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="uuid!=null">
+				 #{uuid},
+			</if>
+			<if test="data!=null">
+				 #{data},
+			</if>
+			<if test="request!=null">
+				 #{request},
+			</if>
+			<if test="Response!=null">
+				 #{Response},
+			</if>
+			<if test="flg!=null">
+				 #{flg},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.cn.hnust.pojo.Message">
+		 UPDATE message
+ 		 <set> 
+			<if test="data != null">
+				 data = #{data},
+			</if>
+			<if test="request != null">
+				 request = #{request},
+			</if>
+			<if test="Response != null">
+				 Response = #{Response},
+			</if>
+			<if test="flg != null">
+				 flg = #{flg},
+			</if>
+
+ 		 </set>
+		 WHERE uuid = #{uuid}
+	</update>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKey" parameterType="com.cn.hnust.pojo.Message">
+		 UPDATE message
+		 SET 
+			 data = #{data},
+			 request = #{request},
+			 Response = #{Response},
+			 flg = #{flg}
+		 WHERE uuid = #{uuid}
+	</update>
+
+</mapper>

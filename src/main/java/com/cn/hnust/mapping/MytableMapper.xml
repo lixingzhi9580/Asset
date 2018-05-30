@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.hnust.mapper.MytableMapper">
+
+	<!--实体映射-->
+	<resultMap id="mytable" type="com.cn.hnust.pojo.Mytable">
+		<!---->
+		<id property="id" column="id" />
+		<!---->
+		<result property="name" column="name" />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		id,	name
+	</sql>
+
+	<!-- 通用查询条件-->
+	<sql id="dynamicWhere">
+		<where>
+			<if test="id != null"> AND id = #{id} </if>
+			<if test="name != null"> AND name = #{name} </if>
+		</where>
+	</sql>
+
+	<!-- 查询所有数据 -->
+	<select id="selectAll" resultMap="mytable">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM MyTable
+	</select>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="mytable" parameterType="java.lang.String">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM MyTable
+		 WHERE id = #{id}
+	</select>
+
+	<!-- 查询（根据实体查询） -->
+	<select id="selectBySelected" resultMap="mytable">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM MyTable
+		 <include refid="dynamicWhere"/>
+	</select>
+
+	<!--删除：根据主键ID删除-->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		 DELETE FROM MyTable
+		 WHERE id = #{id}
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="com.cn.hnust.pojo.Mytable">
+		 INSERT INTO MyTable
+ 		(id,name) 
+		 VALUES 
+ 		(#{id},#{name}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.cn.hnust.pojo.Mytable">
+		 INSERT INTO MyTable
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="name != null">
+				 name,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null">
+				 #{id},
+			</if>
+			<if test="name!=null">
+				 #{name},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 新增或修改 （匹配有值的字段）-->
+	<insert id="replaceInsert" parameterType="com.cn.hnust.pojo.Mytable">
+		 REPLACE INTO MyTable
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="name != null">
+				 name,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null">
+				 #{id},
+			</if>
+			<if test="name!=null">
+				 #{name},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.cn.hnust.pojo.Mytable">
+		 UPDATE MyTable
+ 		 <set> 
+			<if test="name != null">
+				 name = #{name},
+			</if>
+
+ 		 </set>
+		 WHERE id = #{id}
+	</update>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKey" parameterType="com.cn.hnust.pojo.Mytable">
+		 UPDATE MyTable
+		 SET 
+			 name = #{name}
+		 WHERE id = #{id}
+	</update>
+
+</mapper>

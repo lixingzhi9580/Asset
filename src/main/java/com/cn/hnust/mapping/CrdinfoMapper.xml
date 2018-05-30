@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.hnust.mapper.CrdinfoMapper">
+
+	<!--实体映射-->
+	<resultMap id="crdinfo" type="com.cn.hnust.pojo.Crdinfo">
+		<!---->
+		<id property="uuid" column="uuid" />
+		<!---->
+		<result property="crdno" column="crdno" />
+		<!---->
+		<result property="track2" column="track2" />
+		<!---->
+		<result property="track3" column="track3" />
+		<!---->
+		<result property="pin" column="pin" />
+		<!---->
+		<result property="trandt" column="trandt" />
+		<!---->
+		<result property="trantm" column="trantm" />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		uuid,	crdno,	track2,	track3,	pin,	trandt,	trantm
+	</sql>
+
+	<!-- 通用查询条件-->
+	<sql id="dynamicWhere">
+		<where>
+			<if test="uuid != null"> AND uuid = #{uuid} </if>
+			<if test="crdno != null"> AND crdno = #{crdno} </if>
+			<if test="track2 != null"> AND track2 = #{track2} </if>
+			<if test="track3 != null"> AND track3 = #{track3} </if>
+			<if test="pin != null"> AND pin = #{pin} </if>
+			<if test="trandt != null"> AND trandt = #{trandt} </if>
+			<if test="trantm != null"> AND trantm = #{trantm} </if>
+		</where>
+	</sql>
+
+	<!-- 查询所有数据 -->
+	<select id="selectAll" resultMap="crdinfo">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM crdInfo
+	</select>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="crdinfo" parameterType="java.lang.String">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM crdInfo
+		 WHERE uuid = #{uuid}
+	</select>
+
+	<!-- 查询（根据实体查询） -->
+	<select id="selectBySelected" resultMap="crdinfo">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM crdInfo
+		 <include refid="dynamicWhere"/>
+	</select>
+
+	<!--删除：根据主键ID删除-->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		 DELETE FROM crdInfo
+		 WHERE uuid = #{uuid}
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="com.cn.hnust.pojo.Crdinfo">
+		 INSERT INTO crdInfo
+ 			(uuid,crdno,track2,track3,pin,trandt,trantm) 
+		 VALUES 
+ 			(#{uuid},#{crdno},#{track2},#{track3},#{pin},#{trandt},#{trantm}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.cn.hnust.pojo.Crdinfo">
+		 INSERT INTO crdInfo
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="uuid != null">
+				 uuid,
+			</if>
+			<if test="crdno != null">
+				 crdno,
+			</if>
+			<if test="track2 != null">
+				 track2,
+			</if>
+			<if test="track3 != null">
+				 track3,
+			</if>
+			<if test="pin != null">
+				 pin,
+			</if>
+			<if test="trandt != null">
+				 trandt,
+			</if>
+			<if test="trantm != null">
+				 trantm,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="uuid!=null">
+				 #{uuid},
+			</if>
+			<if test="crdno!=null">
+				 #{crdno},
+			</if>
+			<if test="track2!=null">
+				 #{track2},
+			</if>
+			<if test="track3!=null">
+				 #{track3},
+			</if>
+			<if test="pin!=null">
+				 #{pin},
+			</if>
+			<if test="trandt!=null">
+				 #{trandt},
+			</if>
+			<if test="trantm!=null">
+				 #{trantm},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 新增或修改 （匹配有值的字段）-->
+	<insert id="replaceInsert" parameterType="com.cn.hnust.pojo.Crdinfo">
+		 REPLACE INTO crdInfo
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="uuid != null">
+				 uuid,
+			</if>
+			<if test="crdno != null">
+				 crdno,
+			</if>
+			<if test="track2 != null">
+				 track2,
+			</if>
+			<if test="track3 != null">
+				 track3,
+			</if>
+			<if test="pin != null">
+				 pin,
+			</if>
+			<if test="trandt != null">
+				 trandt,
+			</if>
+			<if test="trantm != null">
+				 trantm,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="uuid!=null">
+				 #{uuid},
+			</if>
+			<if test="crdno!=null">
+				 #{crdno},
+			</if>
+			<if test="track2!=null">
+				 #{track2},
+			</if>
+			<if test="track3!=null">
+				 #{track3},
+			</if>
+			<if test="pin!=null">
+				 #{pin},
+			</if>
+			<if test="trandt!=null">
+				 #{trandt},
+			</if>
+			<if test="trantm!=null">
+				 #{trantm},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.cn.hnust.pojo.Crdinfo">
+		 UPDATE crdInfo
+ 		 <set> 
+			<if test="crdno != null">
+				 crdno = #{crdno},
+			</if>
+			<if test="track2 != null">
+				 track2 = #{track2},
+			</if>
+			<if test="track3 != null">
+				 track3 = #{track3},
+			</if>
+			<if test="pin != null">
+				 pin = #{pin},
+			</if>
+			<if test="trandt != null">
+				 trandt = #{trandt},
+			</if>
+			<if test="trantm != null">
+				 trantm = #{trantm},
+			</if>
+
+ 		 </set>
+		 WHERE uuid = #{uuid}
+	</update>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKey" parameterType="com.cn.hnust.pojo.Crdinfo">
+		 UPDATE crdInfo
+		 SET 
+			 crdno = #{crdno},
+			 track2 = #{track2},
+			 track3 = #{track3},
+			 pin = #{pin},
+			 trandt = #{trandt},
+			 trantm = #{trantm}
+		 WHERE uuid = #{uuid}
+	</update>
+
+	<!-- 批量插入-->
+	<insert id="insertBatch" parameterType="java.util.List">
+		 INSERT INTO crdInfo
+			(uuid,crdno,track2,track3,pin,trandt,trantm) 
+		 VALUES 
+		 <foreach collection ="list" item="reddemCode" index= "index" separator =",">
+			(
+				#{reddemCode.uuid},
+				#{reddemCode.crdno},
+				#{reddemCode.track2},
+				#{reddemCode.track3},
+				#{reddemCode.pin},
+				#{reddemCode.trandt},
+				#{reddemCode.trantm}
+			)
+		 </foreach>
+	</insert>
+
+</mapper>

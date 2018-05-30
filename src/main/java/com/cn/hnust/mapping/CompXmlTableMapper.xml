@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.hnust.mapper.CompXmlTableMapper">
+
+	<!--实体映射-->
+	<resultMap id="compXmlTable" type="com.cn.hnust.pojo.CompXmlTable">
+		<!---->
+		<id property="ID" column="ID" />
+		<!---->
+		<result property="FILE" column="FILE" />
+		<!---->
+		<result property="FLG" column="FLG" />
+		<!---->
+		<result property="MSG" column="MSG" />
+		<!---->
+		<result property="TABLESLIST" column="TABLES_LIST" />
+		<!---->
+		<result property="NUM" column="NUM" />
+		<!---->
+		<result property="SQLTXT" column="SQL_TXT" />
+		<!---->
+		<result property="SQLTXT1" column="SQL_TXT1" />
+		<!---->
+		<result property="SQLTXT2" column="SQL_TXT2" />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		ID,	FILE,	FLG,	MSG,	TABLES_LIST,	NUM,	SQL_TXT,	SQL_TXT1,	SQL_TXT2
+	</sql>
+
+	<!-- 通用查询条件-->
+	<sql id="dynamicWhere">
+		<where>
+			<if test="ID != null"> AND ID = #{ID} </if>
+			<if test="FILE != null"> AND FILE = #{FILE} </if>
+			<if test="FLG != null"> AND FLG = #{FLG} </if>
+			<if test="MSG != null"> AND MSG = #{MSG} </if>
+			<if test="TABLESLIST != null"> AND TABLES_LIST = #{TABLESLIST} </if>
+			<if test="NUM != null"> AND NUM = #{NUM} </if>
+			<if test="SQLTXT != null"> AND SQL_TXT = #{SQLTXT} </if>
+			<if test="SQLTXT1 != null"> AND SQL_TXT1 = #{SQLTXT1} </if>
+			<if test="SQLTXT2 != null"> AND SQL_TXT2 = #{SQLTXT2} </if>
+		</where>
+	</sql>
+
+	<!-- 查询所有数据 -->
+	<select id="selectAll" resultMap="compXmlTable">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM COMP_XML_TABLE
+	</select>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="compXmlTable" parameterType="java.lang.Integer">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM COMP_XML_TABLE
+		 WHERE ID = #{ID}
+	</select>
+
+	<!-- 查询（根据实体查询） -->
+	<select id="selectBySelected" resultMap="compXmlTable">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM COMP_XML_TABLE
+		 <include refid="dynamicWhere"/>
+	</select>
+
+	<!--删除：根据主键ID删除-->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		 DELETE FROM COMP_XML_TABLE
+		 WHERE ID = #{ID}
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="com.cn.hnust.pojo.CompXmlTable">
+		 INSERT INTO COMP_XML_TABLE
+ 			(ID,FILE,FLG,MSG,TABLES_LIST,NUM,SQL_TXT,SQL_TXT1,SQL_TXT2) 
+		 VALUES 
+ 			(#{ID},#{FILE},#{FLG},#{MSG},#{TABLESLIST},#{NUM},#{SQLTXT},#{SQLTXT1},#{SQLTXT2}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.cn.hnust.pojo.CompXmlTable">
+		 INSERT INTO COMP_XML_TABLE
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="ID != null">
+				 ID,
+			</if>
+			<if test="FILE != null">
+				 FILE,
+			</if>
+			<if test="FLG != null">
+				 FLG,
+			</if>
+			<if test="MSG != null">
+				 MSG,
+			</if>
+			<if test="TABLESLIST != null">
+				 TABLES_LIST,
+			</if>
+			<if test="NUM != null">
+				 NUM,
+			</if>
+			<if test="SQLTXT != null">
+				 SQL_TXT,
+			</if>
+			<if test="SQLTXT1 != null">
+				 SQL_TXT1,
+			</if>
+			<if test="SQLTXT2 != null">
+				 SQL_TXT2,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="ID!=null">
+				 #{ID},
+			</if>
+			<if test="FILE!=null">
+				 #{FILE},
+			</if>
+			<if test="FLG!=null">
+				 #{FLG},
+			</if>
+			<if test="MSG!=null">
+				 #{MSG},
+			</if>
+			<if test="TABLESLIST!=null">
+				 #{TABLESLIST},
+			</if>
+			<if test="NUM!=null">
+				 #{NUM},
+			</if>
+			<if test="SQLTXT!=null">
+				 #{SQLTXT},
+			</if>
+			<if test="SQLTXT1!=null">
+				 #{SQLTXT1},
+			</if>
+			<if test="SQLTXT2!=null">
+				 #{SQLTXT2},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 新增或修改 （匹配有值的字段）-->
+	<insert id="replaceInsert" parameterType="com.cn.hnust.pojo.CompXmlTable">
+		 REPLACE INTO COMP_XML_TABLE
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="ID != null">
+				 ID,
+			</if>
+			<if test="FILE != null">
+				 FILE,
+			</if>
+			<if test="FLG != null">
+				 FLG,
+			</if>
+			<if test="MSG != null">
+				 MSG,
+			</if>
+			<if test="TABLESLIST != null">
+				 TABLES_LIST,
+			</if>
+			<if test="NUM != null">
+				 NUM,
+			</if>
+			<if test="SQLTXT != null">
+				 SQL_TXT,
+			</if>
+			<if test="SQLTXT1 != null">
+				 SQL_TXT1,
+			</if>
+			<if test="SQLTXT2 != null">
+				 SQL_TXT2,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="ID!=null">
+				 #{ID},
+			</if>
+			<if test="FILE!=null">
+				 #{FILE},
+			</if>
+			<if test="FLG!=null">
+				 #{FLG},
+			</if>
+			<if test="MSG!=null">
+				 #{MSG},
+			</if>
+			<if test="TABLESLIST!=null">
+				 #{TABLESLIST},
+			</if>
+			<if test="NUM!=null">
+				 #{NUM},
+			</if>
+			<if test="SQLTXT!=null">
+				 #{SQLTXT},
+			</if>
+			<if test="SQLTXT1!=null">
+				 #{SQLTXT1},
+			</if>
+			<if test="SQLTXT2!=null">
+				 #{SQLTXT2},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.cn.hnust.pojo.CompXmlTable">
+		 UPDATE COMP_XML_TABLE
+ 		 <set> 
+			<if test="FILE != null">
+				 FILE = #{FILE},
+			</if>
+			<if test="FLG != null">
+				 FLG = #{FLG},
+			</if>
+			<if test="MSG != null">
+				 MSG = #{MSG},
+			</if>
+			<if test="TABLESLIST != null">
+				 TABLES_LIST = #{TABLESLIST},
+			</if>
+			<if test="NUM != null">
+				 NUM = #{NUM},
+			</if>
+			<if test="SQLTXT != null">
+				 SQL_TXT = #{SQLTXT},
+			</if>
+			<if test="SQLTXT1 != null">
+				 SQL_TXT1 = #{SQLTXT1},
+			</if>
+			<if test="SQLTXT2 != null">
+				 SQL_TXT2 = #{SQLTXT2},
+			</if>
+
+ 		 </set>
+		 WHERE ID = #{ID}
+	</update>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKey" parameterType="com.cn.hnust.pojo.CompXmlTable">
+		 UPDATE COMP_XML_TABLE
+		 SET 
+			 FILE = #{FILE},
+			 FLG = #{FLG},
+			 MSG = #{MSG},
+			 TABLES_LIST = #{TABLESLIST},
+			 NUM = #{NUM},
+			 SQL_TXT = #{SQLTXT},
+			 SQL_TXT1 = #{SQLTXT1},
+			 SQL_TXT2 = #{SQLTXT2}
+		 WHERE ID = #{ID}
+	</update>
+
+	<!-- 批量插入-->
+	<insert id="insertBatch" parameterType="java.util.List">
+		 INSERT INTO COMP_XML_TABLE
+			(ID,FILE,FLG,MSG,TABLES_LIST,NUM,SQL_TXT,SQL_TXT1,SQL_TXT2) 
+		 VALUES 
+		 <foreach collection ="list" item="reddemCode" index= "index" separator =",">
+			(
+				#{reddemCode.ID},
+				#{reddemCode.FILE},
+				#{reddemCode.FLG},
+				#{reddemCode.MSG},
+				#{reddemCode.TABLESLIST},
+				#{reddemCode.NUM},
+				#{reddemCode.SQLTXT},
+				#{reddemCode.SQLTXT1},
+				#{reddemCode.SQLTXT2}
+			)
+		 </foreach>
+	</insert>
+
+</mapper>

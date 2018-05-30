@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.hnust.mapper.MinshenAreaMapper">
+
+	<!--实体映射-->
+	<resultMap id="minshenArea" type="com.cn.hnust.pojo.MinshenArea">
+		<!---->
+		<id property="code" column="code" />
+		<!---->
+		<result property="prov" column="prov" />
+		<!---->
+		<result property="parentId" column="parent_id" />
+		<!---->
+		<result property="areaTyp" column="area_typ" />
+		<!---->
+		<result property="city" column="city" />
+		<!---->
+		<result property="dist" column="dist" />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		code,	prov,	parent_id,	area_typ,	city,	dist
+	</sql>
+
+	<!-- 通用查询条件-->
+	<sql id="dynamicWhere">
+		<where>
+			<if test="code != null"> AND code = #{code} </if>
+			<if test="prov != null"> AND prov = #{prov} </if>
+			<if test="parentId != null"> AND parent_id = #{parentId} </if>
+			<if test="areaTyp != null"> AND area_typ = #{areaTyp} </if>
+			<if test="city != null"> AND city = #{city} </if>
+			<if test="dist != null"> AND dist = #{dist} </if>
+		</where>
+	</sql>
+
+	<!-- 查询所有数据 -->
+	<select id="selectAll" resultMap="minshenArea">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM minshen_area
+	</select>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="minshenArea" parameterType="java.lang.String">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM minshen_area
+		 WHERE code = #{code}
+	</select>
+
+	<!-- 查询（根据实体查询） -->
+	<select id="selectBySelected" resultMap="minshenArea">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM minshen_area
+		 <include refid="dynamicWhere"/>
+	</select>
+
+	<!--删除：根据主键ID删除-->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		 DELETE FROM minshen_area
+		 WHERE code = #{code}
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="com.cn.hnust.pojo.MinshenArea">
+		 INSERT INTO minshen_area
+ 		(code,prov,parent_id,area_typ,city,dist) 
+		 VALUES 
+ 		(#{code},#{prov},#{parentId},#{areaTyp},#{city},#{dist}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.cn.hnust.pojo.MinshenArea">
+		 INSERT INTO minshen_area
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="code != null">
+				 code,
+			</if>
+			<if test="prov != null">
+				 prov,
+			</if>
+			<if test="parentId != null">
+				 parent_id,
+			</if>
+			<if test="areaTyp != null">
+				 area_typ,
+			</if>
+			<if test="city != null">
+				 city,
+			</if>
+			<if test="dist != null">
+				 dist,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="code!=null">
+				 #{code},
+			</if>
+			<if test="prov!=null">
+				 #{prov},
+			</if>
+			<if test="parentId!=null">
+				 #{parentId},
+			</if>
+			<if test="areaTyp!=null">
+				 #{areaTyp},
+			</if>
+			<if test="city!=null">
+				 #{city},
+			</if>
+			<if test="dist!=null">
+				 #{dist},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 新增或修改 （匹配有值的字段）-->
+	<insert id="replaceInsert" parameterType="com.cn.hnust.pojo.MinshenArea">
+		 REPLACE INTO minshen_area
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="code != null">
+				 code,
+			</if>
+			<if test="prov != null">
+				 prov,
+			</if>
+			<if test="parentId != null">
+				 parent_id,
+			</if>
+			<if test="areaTyp != null">
+				 area_typ,
+			</if>
+			<if test="city != null">
+				 city,
+			</if>
+			<if test="dist != null">
+				 dist,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="code!=null">
+				 #{code},
+			</if>
+			<if test="prov!=null">
+				 #{prov},
+			</if>
+			<if test="parentId!=null">
+				 #{parentId},
+			</if>
+			<if test="areaTyp!=null">
+				 #{areaTyp},
+			</if>
+			<if test="city!=null">
+				 #{city},
+			</if>
+			<if test="dist!=null">
+				 #{dist},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.cn.hnust.pojo.MinshenArea">
+		 UPDATE minshen_area
+ 		 <set> 
+			<if test="prov != null">
+				 prov = #{prov},
+			</if>
+			<if test="parentId != null">
+				 parent_id = #{parentId},
+			</if>
+			<if test="areaTyp != null">
+				 area_typ = #{areaTyp},
+			</if>
+			<if test="city != null">
+				 city = #{city},
+			</if>
+			<if test="dist != null">
+				 dist = #{dist},
+			</if>
+
+ 		 </set>
+		 WHERE code = #{code}
+	</update>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKey" parameterType="com.cn.hnust.pojo.MinshenArea">
+		 UPDATE minshen_area
+		 SET 
+			 prov = #{prov},
+			 parent_id = #{parentId},
+			 area_typ = #{areaTyp},
+			 city = #{city},
+			 dist = #{dist}
+		 WHERE code = #{code}
+	</update>
+
+</mapper>

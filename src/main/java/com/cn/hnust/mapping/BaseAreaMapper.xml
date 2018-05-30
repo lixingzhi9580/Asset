@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.hnust.mapper.BaseAreaMapper">
+
+	<!--实体映射-->
+	<resultMap id="baseArea" type="com.cn.hnust.pojo.BaseArea">
+		<!---->
+		<id property="AREAID" column="AREA_ID" />
+		<!---->
+		<result property="AREATYP" column="AREA_TYP" />
+		<!---->
+		<result property="AREANM" column="AREA_NM" />
+		<!---->
+		<result property="PARENTID" column="PARENT_ID" />
+		<!---->
+		<result property="SEARCHCODE" column="SEARCH_CODE" />
+		<!---->
+		<result property="SEARCHName" column="SEARCH_Name" />
+		<!---->
+		<result property="CUPCODE" column="CUP_CODE" />
+		<!---->
+		<result property="outAreaId" column="out_area_id" />
+		<!---->
+		<result property="outAREANM" column="out_AREA_NM" />
+		<!---->
+		<result property="outSEARCHCODE" column="out_SEARCH_CODE" />
+		<!---->
+		<result property="outSEARCHName" column="out_SEARCH_name" />
+		<!---->
+		<result property="outParentId" column="out_parent_id" />
+		<!---->
+		<result property="outSpFlg" column="out_sp_flg" />
+		<!---->
+		<result property="outSpMsg" column="out_sp_msg" />
+		<!---->
+		<result property="outSEARCHCODEDist" column="out_SEARCH_CODE_dist" />
+		<!---->
+		<result property="outSEARCHNameDist" column="out_SEARCH_name_dist" />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		AREA_ID,	AREA_TYP,	AREA_NM,	PARENT_ID,	SEARCH_CODE,	SEARCH_Name,	CUP_CODE,	out_area_id,	out_AREA_NM,	out_SEARCH_CODE,	out_SEARCH_name,	out_parent_id,	out_sp_flg,	out_sp_msg,	out_SEARCH_CODE_dist,	out_SEARCH_name_dist
+	</sql>
+
+	<!-- 通用查询条件-->
+	<sql id="dynamicWhere">
+		<where>
+			<if test="AREAID != null"> AND AREA_ID = #{AREAID} </if>
+			<if test="AREATYP != null"> AND AREA_TYP = #{AREATYP} </if>
+			<if test="AREANM != null"> AND AREA_NM = #{AREANM} </if>
+			<if test="PARENTID != null"> AND PARENT_ID = #{PARENTID} </if>
+			<if test="SEARCHCODE != null"> AND SEARCH_CODE = #{SEARCHCODE} </if>
+			<if test="SEARCHName != null"> AND SEARCH_Name = #{SEARCHName} </if>
+			<if test="CUPCODE != null"> AND CUP_CODE = #{CUPCODE} </if>
+			<if test="outAreaId != null"> AND out_area_id = #{outAreaId} </if>
+			<if test="outAREANM != null"> AND out_AREA_NM = #{outAREANM} </if>
+			<if test="outSEARCHCODE != null"> AND out_SEARCH_CODE = #{outSEARCHCODE} </if>
+			<if test="outSEARCHName != null"> AND out_SEARCH_name = #{outSEARCHName} </if>
+			<if test="outParentId != null"> AND out_parent_id = #{outParentId} </if>
+			<if test="outSpFlg != null"> AND out_sp_flg = #{outSpFlg} </if>
+			<if test="outSpMsg != null"> AND out_sp_msg = #{outSpMsg} </if>
+			<if test="outSEARCHCODEDist != null"> AND out_SEARCH_CODE_dist = #{outSEARCHCODEDist} </if>
+			<if test="outSEARCHNameDist != null"> AND out_SEARCH_name_dist = #{outSEARCHNameDist} </if>
+		</where>
+	</sql>
+
+	<!-- 查询所有数据 -->
+	<select id="selectAll" resultMap="baseArea">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM base_area
+	</select>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="baseArea" parameterType="java.lang.String">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM base_area
+		 WHERE AREA_ID = #{AREAID}
+	</select>
+
+	<!-- 查询（根据实体查询） -->
+	<select id="selectBySelected" resultMap="baseArea">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM base_area
+		 <include refid="dynamicWhere"/>
+	</select>
+
+	<!--删除：根据主键ID删除-->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		 DELETE FROM base_area
+		 WHERE AREA_ID = #{AREAID}
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="com.cn.hnust.pojo.BaseArea">
+		 INSERT INTO base_area
+ 		(AREA_ID,AREA_TYP,AREA_NM,PARENT_ID,SEARCH_CODE,SEARCH_Name,CUP_CODE,out_area_id,out_AREA_NM,out_SEARCH_CODE,out_SEARCH_name,out_parent_id,out_sp_flg,out_sp_msg,out_SEARCH_CODE_dist,out_SEARCH_name_dist) 
+		 VALUES 
+ 		(#{AREAID},#{AREATYP},#{AREANM},#{PARENTID},#{SEARCHCODE},#{SEARCHName},#{CUPCODE},#{outAreaId},#{outAREANM},#{outSEARCHCODE},#{outSEARCHName},#{outParentId},#{outSpFlg},#{outSpMsg},#{outSEARCHCODEDist},#{outSEARCHNameDist}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.cn.hnust.pojo.BaseArea">
+		 INSERT INTO base_area
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="AREAID != null">
+				 AREA_ID,
+			</if>
+			<if test="AREATYP != null">
+				 AREA_TYP,
+			</if>
+			<if test="AREANM != null">
+				 AREA_NM,
+			</if>
+			<if test="PARENTID != null">
+				 PARENT_ID,
+			</if>
+			<if test="SEARCHCODE != null">
+				 SEARCH_CODE,
+			</if>
+			<if test="SEARCHName != null">
+				 SEARCH_Name,
+			</if>
+			<if test="CUPCODE != null">
+				 CUP_CODE,
+			</if>
+			<if test="outAreaId != null">
+				 out_area_id,
+			</if>
+			<if test="outAREANM != null">
+				 out_AREA_NM,
+			</if>
+			<if test="outSEARCHCODE != null">
+				 out_SEARCH_CODE,
+			</if>
+			<if test="outSEARCHName != null">
+				 out_SEARCH_name,
+			</if>
+			<if test="outParentId != null">
+				 out_parent_id,
+			</if>
+			<if test="outSpFlg != null">
+				 out_sp_flg,
+			</if>
+			<if test="outSpMsg != null">
+				 out_sp_msg,
+			</if>
+			<if test="outSEARCHCODEDist != null">
+				 out_SEARCH_CODE_dist,
+			</if>
+			<if test="outSEARCHNameDist != null">
+				 out_SEARCH_name_dist,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="AREAID!=null">
+				 #{AREAID},
+			</if>
+			<if test="AREATYP!=null">
+				 #{AREATYP},
+			</if>
+			<if test="AREANM!=null">
+				 #{AREANM},
+			</if>
+			<if test="PARENTID!=null">
+				 #{PARENTID},
+			</if>
+			<if test="SEARCHCODE!=null">
+				 #{SEARCHCODE},
+			</if>
+			<if test="SEARCHName!=null">
+				 #{SEARCHName},
+			</if>
+			<if test="CUPCODE!=null">
+				 #{CUPCODE},
+			</if>
+			<if test="outAreaId!=null">
+				 #{outAreaId},
+			</if>
+			<if test="outAREANM!=null">
+				 #{outAREANM},
+			</if>
+			<if test="outSEARCHCODE!=null">
+				 #{outSEARCHCODE},
+			</if>
+			<if test="outSEARCHName!=null">
+				 #{outSEARCHName},
+			</if>
+			<if test="outParentId!=null">
+				 #{outParentId},
+			</if>
+			<if test="outSpFlg!=null">
+				 #{outSpFlg},
+			</if>
+			<if test="outSpMsg!=null">
+				 #{outSpMsg},
+			</if>
+			<if test="outSEARCHCODEDist!=null">
+				 #{outSEARCHCODEDist},
+			</if>
+			<if test="outSEARCHNameDist!=null">
+				 #{outSEARCHNameDist},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 新增或修改 （匹配有值的字段）-->
+	<insert id="replaceInsert" parameterType="com.cn.hnust.pojo.BaseArea">
+		 REPLACE INTO base_area
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="AREAID != null">
+				 AREA_ID,
+			</if>
+			<if test="AREATYP != null">
+				 AREA_TYP,
+			</if>
+			<if test="AREANM != null">
+				 AREA_NM,
+			</if>
+			<if test="PARENTID != null">
+				 PARENT_ID,
+			</if>
+			<if test="SEARCHCODE != null">
+				 SEARCH_CODE,
+			</if>
+			<if test="SEARCHName != null">
+				 SEARCH_Name,
+			</if>
+			<if test="CUPCODE != null">
+				 CUP_CODE,
+			</if>
+			<if test="outAreaId != null">
+				 out_area_id,
+			</if>
+			<if test="outAREANM != null">
+				 out_AREA_NM,
+			</if>
+			<if test="outSEARCHCODE != null">
+				 out_SEARCH_CODE,
+			</if>
+			<if test="outSEARCHName != null">
+				 out_SEARCH_name,
+			</if>
+			<if test="outParentId != null">
+				 out_parent_id,
+			</if>
+			<if test="outSpFlg != null">
+				 out_sp_flg,
+			</if>
+			<if test="outSpMsg != null">
+				 out_sp_msg,
+			</if>
+			<if test="outSEARCHCODEDist != null">
+				 out_SEARCH_CODE_dist,
+			</if>
+			<if test="outSEARCHNameDist != null">
+				 out_SEARCH_name_dist,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="AREAID!=null">
+				 #{AREAID},
+			</if>
+			<if test="AREATYP!=null">
+				 #{AREATYP},
+			</if>
+			<if test="AREANM!=null">
+				 #{AREANM},
+			</if>
+			<if test="PARENTID!=null">
+				 #{PARENTID},
+			</if>
+			<if test="SEARCHCODE!=null">
+				 #{SEARCHCODE},
+			</if>
+			<if test="SEARCHName!=null">
+				 #{SEARCHName},
+			</if>
+			<if test="CUPCODE!=null">
+				 #{CUPCODE},
+			</if>
+			<if test="outAreaId!=null">
+				 #{outAreaId},
+			</if>
+			<if test="outAREANM!=null">
+				 #{outAREANM},
+			</if>
+			<if test="outSEARCHCODE!=null">
+				 #{outSEARCHCODE},
+			</if>
+			<if test="outSEARCHName!=null">
+				 #{outSEARCHName},
+			</if>
+			<if test="outParentId!=null">
+				 #{outParentId},
+			</if>
+			<if test="outSpFlg!=null">
+				 #{outSpFlg},
+			</if>
+			<if test="outSpMsg!=null">
+				 #{outSpMsg},
+			</if>
+			<if test="outSEARCHCODEDist!=null">
+				 #{outSEARCHCODEDist},
+			</if>
+			<if test="outSEARCHNameDist!=null">
+				 #{outSEARCHNameDist},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.cn.hnust.pojo.BaseArea">
+		 UPDATE base_area
+ 		 <set> 
+			<if test="AREATYP != null">
+				 AREA_TYP = #{AREATYP},
+			</if>
+			<if test="AREANM != null">
+				 AREA_NM = #{AREANM},
+			</if>
+			<if test="PARENTID != null">
+				 PARENT_ID = #{PARENTID},
+			</if>
+			<if test="SEARCHCODE != null">
+				 SEARCH_CODE = #{SEARCHCODE},
+			</if>
+			<if test="SEARCHName != null">
+				 SEARCH_Name = #{SEARCHName},
+			</if>
+			<if test="CUPCODE != null">
+				 CUP_CODE = #{CUPCODE},
+			</if>
+			<if test="outAreaId != null">
+				 out_area_id = #{outAreaId},
+			</if>
+			<if test="outAREANM != null">
+				 out_AREA_NM = #{outAREANM},
+			</if>
+			<if test="outSEARCHCODE != null">
+				 out_SEARCH_CODE = #{outSEARCHCODE},
+			</if>
+			<if test="outSEARCHName != null">
+				 out_SEARCH_name = #{outSEARCHName},
+			</if>
+			<if test="outParentId != null">
+				 out_parent_id = #{outParentId},
+			</if>
+			<if test="outSpFlg != null">
+				 out_sp_flg = #{outSpFlg},
+			</if>
+			<if test="outSpMsg != null">
+				 out_sp_msg = #{outSpMsg},
+			</if>
+			<if test="outSEARCHCODEDist != null">
+				 out_SEARCH_CODE_dist = #{outSEARCHCODEDist},
+			</if>
+			<if test="outSEARCHNameDist != null">
+				 out_SEARCH_name_dist = #{outSEARCHNameDist},
+			</if>
+
+ 		 </set>
+		 WHERE AREA_ID = #{AREAID}
+	</update>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKey" parameterType="com.cn.hnust.pojo.BaseArea">
+		 UPDATE base_area
+		 SET 
+			 AREA_TYP = #{AREATYP},
+			 AREA_NM = #{AREANM},
+			 PARENT_ID = #{PARENTID},
+			 SEARCH_CODE = #{SEARCHCODE},
+			 SEARCH_Name = #{SEARCHName},
+			 CUP_CODE = #{CUPCODE},
+			 out_area_id = #{outAreaId},
+			 out_AREA_NM = #{outAREANM},
+			 out_SEARCH_CODE = #{outSEARCHCODE},
+			 out_SEARCH_name = #{outSEARCHName},
+			 out_parent_id = #{outParentId},
+			 out_sp_flg = #{outSpFlg},
+			 out_sp_msg = #{outSpMsg},
+			 out_SEARCH_CODE_dist = #{outSEARCHCODEDist},
+			 out_SEARCH_name_dist = #{outSEARCHNameDist}
+		 WHERE AREA_ID = #{AREAID}
+	</update>
+
+</mapper>
