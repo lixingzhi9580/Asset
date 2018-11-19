@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<def8583 encoding="GBK">   
+	<field id="0" 		name="msgId" 			type="const" 	sourceType="asciibcd"	sourceLength="2" 	length="4"/> <!-- 消息类型 -->
+	<field id="1" 		name="bitMap" 			type="const" 	sourceType="byte" 		sourceLength="16"/> <!-- 位图 -->
+	<field id="2" 		name="primaryAccount" 	type="var2" 	sourceType="asciibcd" 	length="19" align="left" sourceLengthType="bcd"/> <!-- 主帐号 -->
+	<field id="3" 		name="msgCode" 			type="const" 	sourceType="asciibcd" 	sourceLength="3" 	length="6"/> <!-- 交易处理码 -->
+	<field id="4" 		name="tranAmt" 			type="const" 	sourceType="asciibcd" 	sourceLength="6" 	length="12"/> <!-- 交易金额 -->
+	<field id="5" 		name="f5" 				type="const" 	sourceType="asciibcd" 	sourceLength="6" 	length="12"/> <!-- 结算金额:暂不使用 -->
+	<field id="6" 		name="F6" 				type="const" 	sourceType="asciibcd" 	sourceLength="6" 	length="12"/> <!-- 持卡人扣账金额:暂不使用 -->
+	<field id="7" 		name="F7" 				type="const" 	sourceType="asciibcd" 	sourceLength="5" 	length="10"/> <!-- 交易传输时间:暂不使用 -->
+	<field id="8" 		name="F8" 				type="const" 	sourceType="asciibcd" 	sourceLength="5" 	length="10"/>
+	<field id="9" 		name="F9" 				type="const" 	sourceType="asciibcd" 	sourceLength="4" 	length="8"/> <!-- 结算汇率:暂不使用 -->
+	<field id="10" 		name="f10" 				type="const" 	sourceType="asciibcd" 	sourceLength="4" 	length="8"/> <!-- 持卡人扣款汇率:暂不使用 -->
+	<field id="11" 		name="serialNumber" 	type="const" 	sourceType="asciibcd" 	sourceLength="3" 	length="6"/> <!-- 系统跟踪号 -->
+	<field id="12" 		name="tranTime" 		type="const" 	sourceType="asciibcd" 	sourceLength="3" 	length="6"/> <!-- 受卡方所在地时间 -->
+	<field id="13" 		name="tranDate" 		type="const" 	sourceType="asciibcd" 	sourceLength="2" 	length="4"/> <!-- 受卡方所在地日期 -->
+	<field id="14" 		name="expdate" 			type="const" 	sourceType="asciibcd" 	sourceLength="2" 	length="4"/> <!-- 卡有效期 -->
+	<field id="15"		name="clearingdate" 	type="const" 	sourceType="asciibcd" 	sourceLength="2" 	length="4"/> <!-- 清算日期 -->
+	<field id="16" 		name="f16" 				type="const" 	sourceType="asciibcd" 	sourceLength="2"	length="4"/> <!-- 兑换日期:暂不使用 -->
+	<field id="17" 		name="f17" 				type="const" 	sourceType="asciibcd"	sourceLength="2"	length="4"/> <!-- 中行交换中心的清算日期:暂不使用 -->
+	<field id="18" 		name="f18" 				type="const" 	sourceType="asciibcd" 	sourceLength="2"	length="4"/> <!-- 商户类型:暂不使用 -->
+	<field id="19" 		name="f19" 				type="const"	sourceType="asciibcd" 	sourceLength="2"	length="3"/>
+	<field id="20" 		name="f20" 				type="const" 	sourceType="asciibcd" 	sourceLength="2" 	length="3"/>
+	<field id="21" 		name="f21" 				type="const" 	sourceType="asciibcd" 	sourceLength="5"	length="10"/>
+	<field id="22" 		name="inMod" 			type="const" 	sourceType="asciibcd" 	sourceLength="2"	length="3" align="left"/> <!-- 服务点输入方式码 -->
+	<field id="23" 		name="cardSn" 			type="const" 	sourceType="asciibcd" 	sourceLength="2"	length="3" align="right"/> <!-- 卡片序列号 -->
+	<field id="24" 		name="f24" 				type="const" 	sourceType="asciibcd" 	sourceLength="2"	length="3"/> <!-- 国际网络标识域:暂不使用 -->
+	<field id="25" 		name="conMod" 			type="const" 	sourceType="asciibcd" 	sourceLength="1"	length="2"/> <!-- 服务点条件码 -->
+	<field id="26" 		name="pinCapCode" 		type="const" 	sourceType="asciibcd" 	sourceLength="1"	length="2"/> <!-- 服务点pin获取码 -->
+	<field id="27" 		name="f27" 				type="const"	sourceType="ascii" 		sourceLength="10"/>
+	<field id="28" 		name="f28" 				type="const"	sourceType="asciibcd" 	sourceLength="1"	length="1"/>
+	<field id="29" 		name="f29" 				type="const"	sourceType="ascii"		sourceLength="10"/>
+	<field id="30" 		name="f30" 				type="const"	sourceType="ascii" 		sourceLength="10"/>
+	<field id="31" 		name="f31" 				type="const" 	sourceType="ascii" 		sourceLength="10"/>
+	<field id="32" 		name="acqCodo" 			type="var2" 	sourceType="asciibcd" 	length="11" align="left" sourceLengthType="bcd"/> <!-- 受理方标识码 -->
+	<field id="33" 		name="f33" 				type="var2" 	sourceType="asciibcd" 	length="11" sourceLengthType="bcd"/>
+	<field id="34" 		name="f34" 				type="var2" 	sourceType="ascii" 		length="28" sourceLengthType="bcd"/> <!-- 标识持卡人帐户或者关系:暂不使用 -->
+	<field id="35" 		name="track2" 			type="var2" 	sourceType="asciibcd" 	length="48" align="left" sourceLengthType="bcd"/> <!-- 第二磁道数据 -->
+	<field id="36" 		name="track3" 			type="var3" 	sourceType="asciibcd" 	length="200" align="left" sourceLengthType="bcd"/><!-- 第三磁道数据 -->
+	<field id="37" 		name="accessionNumber" 	type="const" 	sourceType="ascii" 		sourceLength="12"/> <!-- 检索参考号 -->
+	<field id="38"		name="authCode" 		type="const" 	sourceType="ascii" 		sourceLength="6"/> <!-- 授权标识应答码 -->
+	<field id="39" 		name="rcode" 			type="const" 	sourceType="ascii" 		sourceLength="2"/> <!-- 应答码 -->
+	<field id="40" 		name="f40" 				type="const" 	sourceType="ascii" 		sourceLength="10"/>
+	<field id="41" 		name="trmNo" 			type="const" 	sourceType="ascii" 		sourceLength="8"/> <!-- 受卡机终端标识码 -->
+	<field id="42" 		name="mno"				type="const" 	sourceType="ascii" 		sourceLength="15"/> <!-- 受卡方标识码 -->
+	<field id="43" 		name="f43" 				type="const" 	sourceType="ascii" 		sourceLength="40"/> <!-- 卡接受者的名称和地址:暂不使用 -->
+	<field id="44" 		name="addResponseData" 	type="var2" 	sourceType="ascii" 		length="25" sourceLengthType="bcd"/> <!-- 附加响应数据 -->
+	<field id="45" 		name="f45" 				type="var2" 	sourceType="ascii" 		length="79" sourceLengthType="bcd"/>
+	<field id="46" 		name="f46" 				type="const" 	sourceType="ascii" 		sourceLength="10"/>
+	<field id="47" 		name="f47" 				type="const" 	sourceType="ascii" 		sourceLength="10"/>
+	<field id="48" 		name="addData" 			type="var3" 	sourceType="ascii" 		length="322" sourceLengthType="bcd" /> <!-- 附加数据 -->
+	<field id="49"		name="ccy" 				type="const" 	sourceType="ascii" 		sourceLength="3"/> <!-- field4货币代码 -->
+	<field id="50"		name="f50" 				type="const" 	sourceType="asciibcd" 	sourceLength="2" length="3"/>
+	<field id="51"		name="f51" 				type="const" 	sourceType="asciibcd" 	sourceLength="2" length="3"/>
+	<field id="52" 		name="pin" 				type="const" 	sourceType="byte" 		sourceLength="8"/> <!-- 个人标识码数据 -->
+	<field id="53" 		name="securInfo" 		type="const" 	sourceType="asciibcd" 	sourceLength="8"	length="16"/> <!-- 安全控制信息 -->
+	<field id="54" 		name="bl" 				type="var3" 	sourceType="ascii" 		length="32" sourceLengthType="bcd"/> <!-- 余额 -->
+	<field id="55" 		name="icdata" 			type="var3" 	sourceType="ascii" 		length="999" sourceLengthType="bcd" convert="hex"/> <!-- ic卡数据域 -->
+	<field id="56" 		name="f56" 				type="var3" 	sourceType="ascii" 		length="999" sourceLengthType="bcd"/>
+	<field id="57" 		name="f57" 				type="var3" 	sourceType="ascii" 		length="999" sourceLengthType="bcd"/> <!-- 用于将来的使用 -->
+	<field id="58" 		name="pbocData" 		type="var3" 	sourceType="ascii" 		length="100" sourceLengthType="bcd"/> <!-- pboc电子钱包标准的交易信息 -->
+	<field id="59" 		name="f59" 				type="var3" 	sourceType="ascii" 		length="600" sourceLengthType="bcd"/>
+	<field id="60" 		name="f60" 				type="var3" 	sourceType="asciibcd" 	length="17" align="left" sourceLengthType="bcd"/> <!-- 自定义域 -->
+	<field id="61" 		name="f61" 				type="var3" 	sourceType="asciibcd" 	length="29" align="left" sourceLengthType="bcd"/> <!-- 原始信息域 -->
+	<field id="62" 		name="f62" 				type="var3" 	sourceType="ascii"		length="512" sourceLengthType="bcd" convert="hex"/> <!-- 自定义域 -->
+	<field id="63" 		name="f63" 				type="var3" 	sourceType="ascii" 		length="163" sourceLengthType="bcd"/> <!-- 自定义域 -->
+	<field id="64" 		name="f64" 				type="const" 	sourceType="byte" 		sourceLength="8"/> <!-- 消息签定码 -->
+	<field id="65" 		name="f65" 				type="const" 	sourceType="ascii" 		sourceLength="11"/> <!-- 巡检报告工作内容 -->
+	<field id="66" 		name="f66" 				type="const" 	sourceType="ascii" 		sourceLength="1"/>
+	<field id="67" 		name="f67" 				type="const" 	sourceType="ascii" 		sourceLength="10"/>
+	<field id="68" 		name="f68" 				type="const" 	sourceType="ascii" 		sourceLength="10"/>
+	<field id="69" 		name="f69" 				type="const" 	sourceType="ascii" 		sourceLength="10"/>
+	<field id="70" 		name="f70" 				type="const" 	sourceType="ascii" 		length="3"/>
+	<field id="71" 		name="memNo"			type="const" 	sourceType="asciibcd" 	sourceLength="6" length="11" align="left"/> <!-- 会员编号 -->
+	<field id="72" 		name="memLev" 			type="const" 	sourceType="ascii" 		sourceLength="1"/> <!-- 会员级别编号 -->
+	<field id="73" 		name="memDis" 			type="const" 	sourceType="asciibcd" 	sourceLength="2" length="4"/> <!-- 会员折扣 -->
+	<field id="74" 		name="memCouList" 		type="var3" 	sourceType="ascii" 		length="999" sourceLengthType="bcd"/> <!-- 会员优惠券列表 -->
+	<field id="75" 		name="merCouList" 		type="var3" 	sourceType="ascii" 		length="999" sourceLengthType="bcd"/> <!-- 商户优惠券列表 -->
+	<field id="76" 		name="memPoiBl" 		type="const" 	sourceType="asciibcd" 	sourceLength="5" length="10" align="right"/> <!-- 会员积分余额 -->
+	<field id="77" 		name="couNo" 			type="var2" 	sourceType="ascii" 		length="30" sourceLengthType="bcd"/> <!-- 券号 -->
+	<field id="78" 		name="tranRsv" 			type="var2" 	sourceType="ascii" 		length="30" sourceLengthType="bcd"/>
+	<field id="79" 		name="f79" 				type="const" 	sourceType="asciibcd"  	sourceLength="1"/>
+	<field id="80" 		name="memCashAmt" 		type="const" 	sourceType="asciibcd" 	sourceLength="6"/> <!-- 会员消费现金额 -->
+	<field id="81" 		name="memPoi" 			type="const" 	sourceType="asciibcd" 	sourceLength="5"/> <!-- 会员消费积分额 -->
+	<field id="82" 		name="rinfo"	 		type="var2" 	sourceType="ascii" 		length="48" sourceLengthType="bcd"/> <!-- 应答信息 -->
+	<field id="83" 		name="operatId" 		type="const" 	sourceType="asciibcd"  	sourceLength="1"/> <!-- 终端操作员编号 -->
+	<field id="84" 		name="keyzekt" 			type="var2" 	sourceType="ascii" 		length="20" sourceLengthType="bcd"  convert="hex"/> <!-- 加密私密数据key -->
+	<field id="85" 		name="f85" 				type="const" 	sourceType="ascii" 		sourceLength="10"/>
+	<field id="86" 		name="f86" 				type="const" 	sourceType="ascii" 		sourceLength="16"/>
+	<field id="87" 		name="f87" 				type="const" 	sourceType="ascii" 		sourceLength="16"/>
+	<field id="88" 		name="merAbbr"	 		type="var2" 	sourceType="ascii" 		length="40" sourceLengthType="bcd"/> <!-- 商户简称 -->
+	<field id="89" 		name="memAviPoi" 		type="const" 	sourceType="asciibcd" 	sourceLength="5"/> <!-- 会员可用积分余额 -->
+	<field id="90" 		name="f90" 				type="var3" 	sourceType="asciibcd"   length="30" align="left" sourceLengthType="bcd"/> <!--  自定义域 扫描方式 0：手机扫描二维码；   1：pos扫描条码  -->
+	<field id="91" 		name="f91" 				type="const" 	sourceType="ascii" 		sourceLength="10"/>
+	<field id="92" 		name="f92" 				type="const" 	sourceType="ascii" 		sourceLength="10"/>
+	<field id="93" 		name="f93" 				type="const" 	sourceType="ascii" 		sourceLength="10"/>
+	<field id="94" 		name="f94" 				type="const" 	sourceType="ascii" 		sourceLength="10"/>
+	<field id="95" 		name="f95" 				type="const" 	sourceType="ascii" 		sourceLength="3"/>
+	<field id="96" 		name="f96" 				type="var3" 	sourceType="asciibcd" 	length="999" sourceLengthType="bcd" align="right"/>
+	<field id="97" 		name="f97" 				type="const" 	sourceType="ascii" 		sourceLength="141"/>
+	<field id="98" 		name="f98" 				type="var3" 	sourceType="ascii"		length="999" sourceLengthType="bcd" convert="hex"/>
+	<field id="99" 		name="f99" 				type="var3" 	sourceType="ascii" 		length="999" sourceLengthType="bcd" convert="hex"/>
+	<field id="100" 	name="f100" 			type="var2" 	sourceType="ascii" 		length="11" sourceLengthType="bcd"/>
+	<field id="101" 	name="f101" 			type="const" 	sourceType="ascii" 		sourceLength="10"/>
+	<field id="102" 	name="f102" 			type="var2" 	sourceType="ascii" 		length="28" sourceLengthType="bcd"/>
+	<field id="103" 	name="f103" 			type="var2" 	sourceType="ascii" 		length="28" sourceLengthType="bcd"/>
+	<field id="104" 	name="deviceSn" 		type="const" 	sourceType="ascii" 		sourceLength="16"/> <!-- 设备序列号 -->
+	<field id="105" 	name="trmParam" 		type="var3" 	sourceType="ascii" 		length="320" sourceLengthType="bcd"/><!-- 终端业务参数 -->
+	<field id="106" 	name="rulesNo" 			type="const" 	sourceType="asciibcd" 	sourceLength="1" length="2"/> <!-- 业务规则编号 -->
+	<field id="107" 	name="rulesInfo" 		type="var2" 	sourceType="ascii" 		length="16" sourceLengthType="bcd"/> <!-- 业务规则信息 -->
+	<field id="108" 	name="pacNo" 			type="const" 	sourceType="asciibcd" 	sourceLength="3" length="6"/> <!-- 报文序号 -->
+	<field id="109" 	name="pacFlag" 			type="const" 	sourceType="asciibcd" 	sourceLength="1" align="right"/> <!-- 报文后续标识 -->
+	<field id="110" 	name="memDisFlag" 		type="const" 	sourceType="asciibcd" 	sourceLength="1"/> <!-- 会员折扣计算标识 -->
+	<field id="111" 	name="infoSyncParam" 	type="var2" 	sourceType="ascii" 		length="20" sourceLengthType="bcd"/><!-- 信息同步参数 -->
+	<field id="112" 	name="merLevInf" 		type="var3" 	sourceType="ascii" 		length="999" sourceLengthType="bcd"/> <!-- 会员级别信息 -->
+	<field id="113" 	name="appNo" 			type="const" 	sourceType="ascii" 		sourceLength="6"/> <!-- 终端应用编号 -->
+	<field id="114" 	name="appVer" 			type="const" 	sourceType="ascii" 		sourceLength="10"/> <!-- 终端应用版本号 -->
+	<field id="115" 	name="otherParam" 		type="var3" 	sourceType="ascii"		length="256" sourceLengthType="bcd"  convert="hex"/><!-- 自定义参数 -->
+	<field id="116" 	name="posHealth" 		type="var3" 	sourceType="ascii" 		length="256" sourceLengthType="bcd"  convert="hex"/> <!--pos健康度信息 -->
+	<field id="117" 	name="expApp" 			type="var3" 	sourceType="ascii" 		length="999" sourceLengthType="bcd"  convert="hex"/>
+	<field id="118" 	name="qrtypeAdContent" 	type="var3" 	sourceType="ascii" 		length="999" sourceLengthType="bcd"/>
+	<field id="119" 	name="f119" 			type="var3" 	sourceType="ascii" 		length="999" sourceLengthType="bcd"/> <!-- 小票商户联广告 -->
+	<field id="120" 	name="f120" 			type="const" 	sourceType="ascii" 		sourceLength="10"/>
+	<field id="121" 	name="f121" 			type="var3" 	sourceType="ascii" 		length="999" sourceLengthType="bcd"/>
+	<field id="122" 	name="f122" 			type="var3" 	sourceType="ascii" 		length="100" sourceLengthType="bcd"/>
+	<field id="123" 	name="f123" 			type="var3" 	sourceType="ascii" 		length="100" sourceLengthType="bcd"/>
+	<field id="124" 	name="f124" 			type="const" 	sourceType="ascii" 		sourceLength="10"/>
+	<field id="125" 	name="f125" 			type="const" 	sourceType="ascii" 		sourceLength="10"/>
+	<field id="126" 	name="f126" 			type="const" 	sourceType="ascii" 		sourceLength="10"/>
+	<field id="127" 	name="f127" 			type="const" 	sourceType="ascii" 		sourceLength="10"/>
+	<field id="128" 	name="mac" 				type="const" 	sourceType="byte" 		sourceLength="8" convert="hex"/> <!-- mac -->
+</def8583>

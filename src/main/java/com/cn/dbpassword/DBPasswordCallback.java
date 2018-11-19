@@ -25,8 +25,12 @@ public class DBPasswordCallback extends DruidPasswordCallback {
 
 	public static void main(String[] args) {
 		try {
-//			String pwd = "5364FB6D0FE4362065975B736249D3C60985958D719A06E3";
-			String pwd = "EC4A6D12BC6858754AF5D1AF7EFA083C";
+//			String pwd = "BE7499D74B35701B";//dev
+			String pwd = "EC4A6D12BC6858754AF5D1AF7EFA083C";//test
+//			String pwd = "5364FB6D0FE4362065975B736249D3C60985958D719A06E3";//RC
+
+//			String pwd = "736D57553B3927F53E62F0FB8DBFEF9B0985958D719A06E3";
+			
 			
 			String e = decryptHex(getKey(DBPasswordCallback.class.getResourceAsStream("/key.properties")), pwd);
 			System.out.println(e);

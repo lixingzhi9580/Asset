@@ -70,7 +70,8 @@ public class PtsConstants {
 	
 	public static final byte[] TRACK_DESKEY = DES.initKey("5A4F71033BC985491252FB6A2036CA74");
 	public static final byte[] TRACK_DESKEY_NEWLAND = DES.initKey("7504825A300B4000145C110D1860576E");
-	
+	public static final byte[] TRACK_DESKEY_LD = DES.initKey("1506825A310B4060E45C1A0D1860576A");
+
 	public static final Pattern uuidPattern = Pattern.compile("uuid=([a-zA-Z0-9]+)");
 	
 }

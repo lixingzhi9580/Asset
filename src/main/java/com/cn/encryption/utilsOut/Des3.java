@@ -89,19 +89,19 @@ public class Des3 {
 	}
 	
 	public static void main(String[] args) {
-		String iv = "我唉12";
-		String key=generateKey();
-		
-		String aaa="wodadadad";
-		String bbb=Base64.getEncoder().encodeToString(aaa.getBytes());
-		System.out.println(bbb);
-		byte[] ccc=Base64.getDecoder().decode(bbb);
-		System.out.println(new String(ccc));
-		System.out.println(key);
-		String data = Des3.encode(new String(ccc), key,iv);
-		System.out.println(data);
-		String data1 = Des3.decode(data, key,iv);
-		System.out.println(data1);	
+		String iv = "12345678";
+		System.out.println("偏移量"+iv);
+		String key = "u8sZtwDNMeNxUkxNsYSUbBxxWyj56K63TycQvppKVFI33ISu";
+		System.out.println("48位des密钥"+key);
+		String value="wodadadad";
+		System.out.println("json值"+value);
+//		String bbb=Base64.getEncoder().encodeToString(value.getBytes());
+//		System.out.println("base64处理后的json值"+bbb);
+//		byte[] ccc=Base64.getDecoder().decode(bbb);
+		String data = Des3.encode(value, key,iv);
+		System.out.println("Des3加密后的值"+data);
+		String data1 = Des3.decode("+gmme6VD/bnvtoT1fTPbsje+TYe87I1sPM9haYw1FBPaXaI0puedq1Zl6IqYP/XNEyU/sHHNWOKRTkLVoIoFJXQETMEAJL0pc/nMsB9KMBEgeI/8+AA+vTHkRgI73k2IhzjOFqbEyoT1fKrypyA+IpLV/H2td+dKGY1BA63xRaUuqHF67bsGNAyqclp7Jbh7wSxEhkWliJ0e+ENXUz4bLesqzZ/ObsKWgUyawPplk9DyNS3ubKrP8ThixQrQepbU9T67DU5WMv4=", key,iv);
+		System.out.println("Des3解密后的值"+data1);
 	}
 }
 
